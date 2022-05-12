@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "types": ["@types/node"],
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true
+  },
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules"],
+  "include": [
+    ".eslintrc.cjs",
+    "vitest.config.ts",
+    ".prettierrc.cjs",
+    ".babelrc.js",
+    "**/src/**/*.ts",
+    "**/src/**/*.d.ts"
+  ]
+}

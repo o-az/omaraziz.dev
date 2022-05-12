@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "strict": true,
+    "pretty": true,
+    "baseUrl": ".",
+    "allowJs": true,
+    "outDir": "dist",
+    "jsx": "preserve",
+    "declaration": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "removeComments": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "preserveConstEnums": true,
+    "moduleResolution": "Node",
+    "preserveWatchOutput": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["@types/node"],
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules", ".scratch"],
+  "include": ["src", "test"],
+  "ts-node": {
+    "swc": true,
+    "esm": true,
+    "transpileOnly": true,
+    "require": ["tsconfig-paths/register"],
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
