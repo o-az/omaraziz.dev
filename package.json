@@ -2,7 +2,7 @@
   "name": "omaraziz.dev",
   "exports": "./index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rimraf dist",
@@ -56,7 +56,7 @@
   },
   "engineStrict": true,
   "version": "1.0.0",
-  "description": "TypeScript template I use. TypeScript/ESLint/Prettier/dotenv/vitest",
+  "description": "My personal website",
   "author": "o-az",
   "license": "GPL-3.0-or-later"
 }

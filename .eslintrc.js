@@ -16,6 +16,7 @@ module.exports = {
     'no-mixed-operators': 'off',
     'no-multiple-empty-lines': 'off',
     'no-unexpected-multiline': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/ban-types': [
       'warn',
       {
