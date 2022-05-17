@@ -75,7 +75,6 @@
     "node": ">=17.0.0",
     "yarn": ">=1.22.0"
   },
-  "engineStrict": true,
   "version": "1.0.0",
   "description": "My personal website",
   "author": "o-az",

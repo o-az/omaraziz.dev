@@ -14,20 +14,21 @@ on:
       - "*"
 
 env:
-  NODE_VERSION: 17
+  NODE_VERSION: '16'
 
 jobs:
   lint:
     name: ESLint / Prettiers / Test
     runs-on: ubuntu-latest
     steps:
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: .nvmrc
 
       - name: Code checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: npm ci
