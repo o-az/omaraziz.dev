@@ -29,10 +29,10 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: latest
-          cache: yarn
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: latest
+      #     cache: yarn --frozen-lockfile
 
       - name: Install dependencies
         run: 'rm -rf node_modules && yarn install --frozen-lockfile'
