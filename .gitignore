@@ -62,3 +62,4 @@ dist-ssr
 yarn.lock
 .scratch
 .env
+package-lock.json
