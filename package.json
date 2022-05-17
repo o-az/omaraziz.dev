@@ -3,7 +3,7 @@
   "exports": "./index.js",
   "scripts": {
     "dev": "vite --open",
-    "build": "vite build && yarn gen-sitemap",
+    "build": "vite build",
     "preview": "vite preview",
     "clean": "rimraf dist",
     "compile": "cross-env-shell babel src -d dist --source-maps --extensions '.ts'",
