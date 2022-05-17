@@ -14,7 +14,7 @@ on:
       - "*"
 
 env:
-  NODE_VERSION: 17
+  NODE_VERSION: 18
 
 jobs:
   lint:
@@ -24,7 +24,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v2
         with:
-          node-version: '{{ env.NODE_VERSION }}'
+          node-version-file: .nvmrc
 
       - name: Code checkout
         uses: actions/checkout@v2
