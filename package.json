@@ -5,7 +5,7 @@
     "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist node_modules && yarn install --frozen-lockfile",
     "compile": "cross-env-shell babel src -d dist --source-maps --extensions '.ts'",
     "start": "yarn node-options && node dist/src/index.js",
     "test": "vitest",
