@@ -11,6 +11,8 @@ module.exports = {
   bracketSpacing: true,
   bracketSameLine: false,
   quoteProps: 'as-needed',
+  // plugins: ['prettier-plugin-tailwindcss'],
+  // tailwindConfig: './tailwind.config.js',
   overrides: [
     {
       files: ['*.ts', '*.tsx'],

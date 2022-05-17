@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './styles/index.css'
+import App from '@/App'
+import '@/config/sentry'
+import '@/styles/index.css'
 
-const root = document.getElementById('root') as HTMLElement
-
-ReactDOM.createRoot(root).render(
+const rootElement = document.getElementById('root') as HTMLElement
+const root = ReactDOM.createRoot(rootElement)
+const HTML = (
   <React.StrictMode>
     <App />
   </React.StrictMode>
 )
+root.render(HTML)

@@ -1,10 +1,17 @@
 /** @type {import('@types/tailwindcss/tailwind-config').TailwindConfig} */
-const { spacing } = require('tailwindcss/defaultTheme')
+const { spacing, fontFamily } = require('tailwindcss/defaultTheme')
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['IBM Plex Sans', ...fontFamily.sans],
+        inter: ['Inter', ...fontFamily.sans],
+      },
+      backgroundOpacity: {
+        15: '0.15',
+      },
       colors: {
         'blue-opaque': 'rgb(13 42 148 / 18%)',
         gray: {
@@ -88,5 +95,9 @@ module.exports = {
       }),
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
+    require('prettier-plugin-tailwindcss'),
+  ],
 }

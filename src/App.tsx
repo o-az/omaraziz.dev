@@ -1,12 +1,18 @@
 import * as React from 'react'
-import { Header } from './components'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ROUTES } from '@/routes'
+import { Header } from '@/components'
 
 function App() {
   return (
-    <main className="text-white m-4 grid grid-rows-3 grid-flow-col gap-6">
+    <BrowserRouter>
       <Header />
-      <section>Omr Aziz</section>
-    </main>
+      <Routes>
+        {ROUTES.map(({ name, path, component }) => (
+          <Route key={name} path={path} element={component} />
+        ))}
+      </Routes>
+    </BrowserRouter>
   )
 }
 
