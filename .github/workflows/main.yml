@@ -40,5 +40,5 @@ jobs:
       - name: Run format
         run: npm run format
 
-      - name: Run tests
-        run: npm run test:nowatch
+      # - name: Run tests
+      #   run: npm run test:nowatch

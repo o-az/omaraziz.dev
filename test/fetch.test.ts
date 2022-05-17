@@ -1,4 +1,4 @@
-import { test, it, expect } from 'vitest'
+import { expect, it, test } from 'vitest'
 
 test('fetch', () => {
   it('should be not throw error', async () => {

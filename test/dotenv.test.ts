@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { environment } from '@/env'
+import { describe, expect, it } from 'vitest'
 
+import { environment } from '@/env'
+console.log(environment)
 describe('dotenv', () => {
   it('should be defined', () => {
     expect(environment).toBeDefined()
