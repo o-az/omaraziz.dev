@@ -25,8 +25,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: latest
-          cache: yarn
-      - run: yarn install --frozen-lockfile
 
       - name: Install Yarn
         run: npm install -g yarn
