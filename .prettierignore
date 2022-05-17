@@ -10,3 +10,6 @@ node_modules/
 .cache
 package-lock.json
 pnpm-lock.yaml
+.github
+yarn.lock
+yarn-error.log

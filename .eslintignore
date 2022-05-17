@@ -15,3 +15,7 @@ package-lock.json
 pnpm-lock.yaml
 dist
 node_modules
+.github
+
+yarn.lock
+yarn-error.log

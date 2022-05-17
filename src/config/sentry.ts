@@ -3,6 +3,7 @@ import * as Sentry from '@sentry/react'
 import { BrowserTracing } from '@sentry/tracing'
 
 import { environment } from '@/env'
+
 const { SENTRY_DSN, PROD } = environment
 
 const sentryConfig: BrowserOptions = {

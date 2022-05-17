@@ -12,6 +12,7 @@ async function generateRSS() {
       site_url: 'https://omaraziz.dev',
       feed_url: 'https://omaraziz.dev/feed.xml',
     })
+    await writeFile('public/feed.xml', feed.xml())
     return true
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : `Encoutered an error: ` + error
@@ -20,4 +21,4 @@ async function generateRSS() {
   }
 }
 
-//generateRSS().then(_ => console.log(JSON.stringify(_, null, 2)))
+generateRSS().then(_ => console.log(JSON.stringify(_, null, 2)))
