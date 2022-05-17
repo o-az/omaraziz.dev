@@ -4,6 +4,7 @@
     "composite": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "skipLibCheck": true
   },
   "include": ["vite.config.ts", "vitest.config.ts"],

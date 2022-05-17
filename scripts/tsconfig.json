@@ -8,8 +8,6 @@
     "pretty": true,
     "baseUrl": ".",
     "allowJs": true,
-    "outDir": "dist",
-    "jsx": "react-jsx",
     "declaration": true,
     "skipLibCheck": true,
     "alwaysStrict": true,
@@ -24,22 +22,21 @@
     "resolveJsonModule": true,
     "preserveConstEnums": true,
     "moduleResolution": "Node",
-
     "preserveWatchOutput": true,
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
+    "typeRoots": ["**/node_modules/@types"],
     "forceConsistentCasingInFileNames": true,
     "types": ["@types/node"],
     "paths": {
-      "@/*": ["src/*"]
+      "~scripts/*": ["./*"]
     }
   },
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["node_modules", ".scratch"],
-  "include": ["src", "test"],
+  "exclude": ["node_modules"],
+  "include": ["./"],
   "ts-node": {
     "swc": true,
     "esm": true,

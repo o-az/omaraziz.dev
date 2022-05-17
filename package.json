@@ -3,7 +3,7 @@
   "exports": "./index.js",
   "scripts": {
     "dev": "vite --open",
-    "build": "vite build",
+    "build": "vite build && yarn gen-sitemap",
     "preview": "vite preview",
     "clean": "rimraf dist",
     "compile": "cross-env-shell babel src -d dist --source-maps --extensions '.ts'",
@@ -13,6 +13,7 @@
     "lint": "npx eslint --fix ./src",
     "format": "npx prettier --write ./src",
     "typecheck": "tsc -p .",
+    "gen-sitemap": "yarn tsnode scripts/generate-sitemap.ts && npx prettier --tab-width 2 --write public/sitemap.xml",
     "tsnode": "yarn node-options && ts-node --esm -p --skip-project -T -r tsconfig-paths/register $npm_config_path",
     "node-options": "NODE_OPTIONS=\"--experimental-fetch --no-warnings --experimental-specifier-resolution=node\""
   },
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/preset-typescript": "^7.16.7",
+    "@prettier/plugin-xml": "^2.2.0",
     "@swc/core": "^1.2.179",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
