@@ -30,7 +30,7 @@ export function Header() {
   // TODO: don't forget to remove this
   if (environment.PROD) return null
   return (
-    <header>
+    <header className="mx-4">
       <ul className="flex gap-4 text-xl">
         {HEADER_ITEMS.map(({ name, path }) => (
           <Link to={path} key={path}>
