@@ -1,12 +1,11 @@
 /// <reference types="vite/client" />
 
-interface EnvVariables {
+interface ImportMetaEnv {
   readonly MY_ENV_VARIABLE: string
   readonly VITE_MY_ENV_VARIABLE: string
+  readonly SENTRY_DSN: string
   readonly VITE_SENTRY_DSN: string
 }
-
-type ImportMetaEnv = EnvVariables
 
 interface ImportMeta {
   readonly env: ImportMetaEnv
