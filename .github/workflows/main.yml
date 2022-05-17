@@ -14,7 +14,7 @@ on:
       - "*"
 
 env:
-  NODE_VERSION: 18
+  NODE_VERSION: 17
 
 jobs:
   lint:
