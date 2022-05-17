@@ -1,6 +1,6 @@
+import type { BrowserOptions } from '@sentry/browser'
 import * as Sentry from '@sentry/react'
 import { BrowserTracing } from '@sentry/tracing'
-import type { BrowserOptions } from '@sentry/browser'
 
 import { environment } from '@/env'
 const { SENTRY_DSN, PROD } = environment

@@ -6,11 +6,7 @@ interface EnvVariables {
   readonly VITE_SENTRY_DSN: string
 }
 
-declare namespace NodeJS {
-  interface ProcessEnv extends EnvVariables {}
-}
-
-interface ImportMetaEnv extends EnvVariables {}
+type ImportMetaEnv = EnvVariables
 
 interface ImportMeta {
   readonly env: ImportMetaEnv

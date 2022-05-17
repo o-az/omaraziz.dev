@@ -1,7 +1,7 @@
-import { Home } from './home'
 import { Blog } from './blog'
-import { Snippets } from './snippets'
+import { Home } from './home'
 import { Projects } from './projects'
+import { Snippets } from './snippets'
 
 interface Route {
   name: string

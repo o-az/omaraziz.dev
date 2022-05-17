@@ -6,21 +6,20 @@ module.exports = {
     node: true,
     browser: true,
   },
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: [
-    'eslint:recommended',
-    'simple-import-sort',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
-  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: { jsx: true, impliedStrict: true },
   },
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'simple-import-sort'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended',
+  ],
   settings: {
     react: {
       version: 'detect',

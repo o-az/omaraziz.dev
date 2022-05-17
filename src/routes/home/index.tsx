@@ -29,7 +29,7 @@ export function Home() {
               className="rounded-lg p-1 font-normal text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 sm:px-3 sm:py-2 md:inline-block"
               key={index}
             >
-              <a href={path} target="_blank">
+              <a href={path} target="_blank" rel="noreferrer">
                 {name}
               </a>
             </li>

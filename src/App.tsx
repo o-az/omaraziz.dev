@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ROUTES } from '@/routes'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { Header } from '@/components'
+import { ROUTES } from '@/routes'
 
 function App() {
   return (
