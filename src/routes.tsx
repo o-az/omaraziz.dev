@@ -7,11 +7,10 @@ export const ROUTES: RouteDefinition[] = [
     component: lazy(() => import('@/pages/home')),
   },
   {
-    path: '/blog/:id',
-    component: lazy(() => import('@/pages/blog/[id]')),
+    path: '/blog',
     children: [
       {
-        path: '/blog',
+        path: '/',
         component: lazy(() => import('@/pages/blog')),
       },
       {

@@ -28,7 +28,6 @@
   font-family: 'IBM Plex Sans', serif;
 }
 
-
 #root {
   @apply font-sans;
 }
