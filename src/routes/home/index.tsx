@@ -1,6 +1,11 @@
 import * as React from 'react'
 
-export const LINKS = [
+interface LinkItem {
+  name: string
+  path: string
+}
+
+export const LINKS: ReadonlyArray<LinkItem> = [
   {
     name: 'GitHub',
     path: 'https://github.com/o-az',
@@ -9,7 +14,11 @@ export const LINKS = [
     name: 'Twitter',
     path: 'https://twitter.com/undeterrable',
   },
-]
+  {
+    name: 'Email',
+    path: 'mailto:hello@omaraziz.dev',
+  },
+] as const
 
 export function Home() {
   return (

@@ -2,20 +2,33 @@
 /// <reference types="vitest" />
 
 // Plugins
-import reactPlugin from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react'
 import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
+import WindiCSS from 'vite-plugin-windicss'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-const config: UserConfig = {
-  plugins: [reactPlugin(), tsconfigPaths()],
-  resolve: {
-    alias: {
-      '@/': './src',
+// https://vitejs.dev/config/
+const config = async (): Promise<UserConfig> => {
+  //
+  const { default: mdx } = await import('@mdx-js/rollup')
+
+  return {
+    plugins: [react(), WindiCSS(), tsconfigPaths(), mdx({ remarkPlugins: [] })],
+    server: { host: '0.0.0.0', port: 3000 },
+    resolve: {
+      alias: {
+        '@/': './src',
+        '~blog/': './data/blog',
+      },
     },
-  },
-  test: { globals: true },
+    optimizeDeps: {
+      include: ['react/jsx-runtime'],
+    },
+    build: { minify: true },
+    /** vitest */
+    test: { globals: true },
+  }
 }
 
-// https://vitejs.dev/config/
-export default defineConfig({ ...config })
+export default defineConfig(config)

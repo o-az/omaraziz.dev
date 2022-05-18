@@ -2,11 +2,20 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "composite": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "types": []
   },
-  "include": ["vite.config.ts", "vitest.config.ts"],
-  "exclude": ["node_modules"]
+  "include": ["vite.config.ts"],
+  "exclude": [
+    "node_modules",
+    ".scratch",
+    "**/node_modules/**",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/vitest/dist/index.d.ts",
+    "node_modules/vitest/dist/index.d.ts",
+    "node_modules/@antfu/utils/index.d.ts",
+    "./node_modules/@antfu/utils/index.d.ts"
+  ]
 }

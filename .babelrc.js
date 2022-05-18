@@ -1,5 +1,5 @@
-/** @type {import('@types/babel-core').TransformOptions} */
+/** @type {import('@types/babel-core').BabelFileMetadata} */
 module.exports = {
-  presets: [['@babel/preset-env', { modules: false, targets: { node: true } }], '@babel/preset-typescript'],
-  ignore: ['node_modules/**'],
+  presets: [['@babel/preset-env'], '@babel/preset-typescript'],
+  ignore: ['node_modules'],
 }

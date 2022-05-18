@@ -30,4 +30,4 @@ export const ROUTES: ReadonlyArray<Route> = [
     path: '/projects',
     component: <Projects />,
   },
-]
+] as const

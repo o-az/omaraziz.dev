@@ -33,13 +33,23 @@
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@types/node"],
+    "types": ["@types/node", "@types/mdx"],
     "paths": {
       "@/*": ["src/*"]
     }
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["node_modules", ".scratch"],
+  "exclude": [
+    "node_modules",
+    ".scratch",
+    "**/node_modules/**",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/vitest/dist/index.d.ts",
+    "node_modules/vitest/dist/index.d.ts",
+    "node_modules/@antfu/utils/index.d.ts",
+    "./node_modules/@antfu/utils/index.d.ts"
+  ],
   "include": ["src", "test"],
   "ts-node": {
     "swc": true,

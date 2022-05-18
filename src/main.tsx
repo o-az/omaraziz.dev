@@ -1,5 +1,10 @@
 import '@/config/sentry'
 import '@/styles/index.css'
+import 'virtual:windi.css'
+import 'virtual:windi-base.css'
+import 'virtual:windi-components.css'
+import 'virtual:windi-utilities.css'
+import 'virtual:windi-devtools'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
