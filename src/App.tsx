@@ -1,18 +1,17 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useRoutes } from 'solid-app-router'
+import type { Component } from 'solid-js'
 
 import { Header } from '@/components'
 import { ROUTES } from '@/routes'
 
-function App() {
+const App: Component = () => {
+  const Route = useRoutes(ROUTES)
+
   return (
-    <BrowserRouter>
+    <main>
       <Header />
-      <Routes>
-        {ROUTES.map(({ name, path, component }) => (
-          <Route key={name} path={path} element={component} />
-        ))}
-      </Routes>
-    </BrowserRouter>
+      <Route />
+    </main>
   )
 }
 

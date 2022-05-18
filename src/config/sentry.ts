@@ -1,21 +1,23 @@
-import type { BrowserOptions } from '@sentry/browser'
-import * as Sentry from '@sentry/react'
-import { BrowserTracing } from '@sentry/tracing'
+export {}
 
-import { environment } from '@/env'
+// import type { BrowserOptions } from '@sentry/browser'
+// import * as Sentry from '@sentry/react'
+// import { BrowserTracing } from '@sentry/tracing'
 
-const { SENTRY_DSN, PROD } = environment
+// import { environment } from '@/env'
 
-const sentryConfig: BrowserOptions = {
-  dsn: SENTRY_DSN,
-  integrations: [new BrowserTracing()],
+// const { SENTRY_DSN, PROD } = environment
 
-  // Set tracesSampleRate to 1.0 to capture 100%
-  // of transactions for performance monitoring.
-  // We recommend adjusting this value in production
-  tracesSampleRate: 1.0,
-}
+// const sentryConfig: BrowserOptions = {
+//   dsn: SENTRY_DSN,
+//   integrations: [new BrowserTracing()],
 
-if (PROD) {
-  Sentry.init(sentryConfig)
-}
+//   // Set tracesSampleRate to 1.0 to capture 100%
+//   // of transactions for performance monitoring.
+//   // We recommend adjusting this value in production
+//   tracesSampleRate: 1.0,
+// }
+
+// if (PROD) {
+//   Sentry.init(sentryConfig)
+// }

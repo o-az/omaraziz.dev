@@ -5,17 +5,19 @@ import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
 import 'virtual:windi-devtools'
+/* @refresh reload */
+import 'windi.css'
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Router } from 'solid-app-router'
+import { render } from 'solid-js/web'
 
 import App from '@/App'
 
-const rootElement = document.getElementById('root') as HTMLElement
-const root = ReactDOM.createRoot(rootElement)
-const HTML = (
-  <React.StrictMode>
+const root = document.getElementById('root') as HTMLElement
+const HTML = () => (
+  <Router>
     <App />
-  </React.StrictMode>
+  </Router>
 )
-root.render(HTML)
+
+render(HTML, root)

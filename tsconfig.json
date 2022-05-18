@@ -10,7 +10,7 @@
     "noEmit": true,
     "allowJs": true,
     "outDir": "dist",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "declaration": true,
     "incremental": true,
     "skipLibCheck": true,
@@ -27,13 +27,14 @@
     "preserveConstEnums": true,
     "moduleResolution": "Node",
     "preserveWatchOutput": true,
+    "jsxImportSource": "solid-js",
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@types/node", "@types/mdx"],
+    "types": ["@types/node", "@types/mdx", "vite/client", "solid-jsx/types"],
     "paths": {
       "@/*": ["src/*"]
     }

@@ -22,9 +22,9 @@ export default defineConfig({
   theme: {
     extend: {
       fontFamily: {
-        sans: ['\\"Inter var\\"', '\\"IBM Plex Serif\\"', ...defaultTheme.fontFamily.sans],
-        serif: ['\\"IBM Plex Serif\\"', '\\"Inter var\\"', ...defaultTheme.fontFamily.serif],
-        body: ['\\"Inter var\\"'],
+        sans: ['Inter var', 'IBM Plex Serif', ...defaultTheme.fontFamily.sans],
+        serif: ['IBM Plex Serif', 'Inter var', ...defaultTheme.fontFamily.serif],
+        body: ['Inter var'],
       },
       backgroundOpacity: {
         15: '0.15',
