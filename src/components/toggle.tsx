@@ -3,7 +3,7 @@ import * as Solid from 'solid-js'
 type Theme = 'light' | 'dark'
 
 const htmlTag = document.querySelector<HTMLLinkElement>('html') as HTMLLinkElement
-const current: Theme = window && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+const current: Theme = window && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'
 
 export function Toggle() {
   const [theme, setTheme] = Solid.createSignal<Theme>(current)

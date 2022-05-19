@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
     "strict": true,
     "pretty": true,
     "baseUrl": ".",
@@ -36,7 +36,8 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["@types/node", "@types/mdx", "vite/client", "solid-jsx/types"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "~posts/*": ["posts/*"]
     }
   },
   "references": [{ "path": "./tsconfig.node.json" }],

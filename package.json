@@ -1,8 +1,9 @@
 {
   "name": "omaraziz.dev",
-  "exports": "./index.js",
+  "homepage": "https://omaraziz.dev",
+  "type": "module",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rimraf dist node_modules && yarn install --frozen-lockfile",
@@ -12,6 +13,7 @@
     "test-file": "yarn node-options && vitest $npm_config_path",
     "test:nowatch": "vitest --run",
     "lint": "npx eslint --fix ./src ./scripts",
+    "lint:prod": "NODE_ENV=production npx eslint --fix ./src ./scripts",
     "format": "npx prettier --write ./src ./scripts",
     "pre-commit": "yarn lint && yarn format && yarn test:nowatch",
     "post-commit": "yarn lint && yarn format && yarn test:nowatch",
@@ -23,14 +25,16 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@mdx-js/rollup": "^2.1.1",
     "@sentry/tracing": "^6.19.7",
+    "remark-gfm": "^3.0.1",
     "solid-app-router": "^0.3.2",
     "solid-js": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/preset-typescript": "^7.16.7",
+    "@mdx-js/mdx": "^2.1.1",
+    "@mdx-js/rollup": "^2.1.1",
     "@prettier/plugin-xml": "^2.2.0",
     "@swc/core": "^1.2.179",
     "@types/babel-core": "^6.25.7",
@@ -50,9 +54,19 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.0",
+    "markdown-it-prism": "^2.2.4",
     "prettier": "^2.6.2",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-highlight": "^5.0.2",
+    "rehype-pretty-code": "^0.3.1",
+    "rehype-raw": "^6.1.1",
+    "rehype-slug": "^5.0.1",
+    "remark-frontmatter": "^4.0.1",
+    "remark-mdx-frontmatter": "^1.1.1",
+    "remark-shiki-twoslash": "^3.0.9",
     "rimraf": "^3.0.2",
     "rss": "^1.2.2",
+    "shiki": "^0.10.1",
     "solid-jsx": "^0.7.1",
     "solid-mdx": "^0.0.6",
     "ts-node": "^10.7.0",
@@ -60,6 +74,7 @@
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.6.4",
     "vite": "^2.9.9",
+    "vite-plugin-mdx": "^3.5.10",
     "vite-plugin-solid": "^2.2.6",
     "vite-plugin-windicss": "^1.8.4",
     "vite-tsconfig-paths": "^3.4.1",
@@ -73,6 +88,14 @@
   },
   "version": "1.0.0",
   "description": "My personal website",
-  "author": "o-az",
-  "license": "GPL-3.0-or-later"
+  "author": "Omar Aziz <me@omaraziz.dev> (https://omaraziz.dev/)",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/o-az/omaraziz.dev/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/o-az/omaraziz.dev.git"
+  },
+  "keywords": []
 }

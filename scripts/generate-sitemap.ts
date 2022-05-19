@@ -4,7 +4,7 @@ import prettier from 'prettier'
 
 async function generateSiteMap() {
   try {
-    const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
+    const prettierConfig = await prettier.resolveConfig('./.prettierrc.cjs')
     const pages = await globby(['**/src/routes/**/*.tsx', '!**/node_modules/**'])
     const siteMap = `
   <?xml version="1.0" encoding="UTF-8"?>

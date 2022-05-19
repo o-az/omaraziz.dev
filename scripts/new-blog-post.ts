@@ -33,7 +33,7 @@ export async function newBlog() {
     })
     const newPostsJSON = [...postsJSON, ...newFilesJSON]
     const newPostsJSONString = JSON.stringify(newPostsJSON, null, 2)
-    const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
+    const prettierConfig = await prettier.resolveConfig('./.prettierrc.cjs')
     const formatted = prettier.format(newPostsJSONString, { ...prettierConfig, parser: 'json' })
     await writeFile(`${postsDirectory}/posts.json`, formatted)
     return true

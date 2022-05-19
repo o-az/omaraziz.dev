@@ -31,8 +31,9 @@ module.exports = {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'jsx-a11y/accessible-emoji': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
+    '@typescript-eslint/no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'simple-import-sort/imports': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'simple-import-sort/exports': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
