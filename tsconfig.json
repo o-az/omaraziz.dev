@@ -34,7 +34,7 @@
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@types/node", "@types/mdx", "vite/client", "solid-jsx/types"],
+    "types": ["node", "@types/mdx", "vite/client", "solid-jsx/types"],
     "paths": {
       "@/*": ["src/*"],
       "~posts/*": ["posts/*"]

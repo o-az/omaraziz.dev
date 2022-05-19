@@ -19,6 +19,9 @@ export default defineConfig({
     app: 'text-red',
     'app-border': 'border border-gray-200 dark:border-dark-300',
   },
+  shortcuts: {
+    'logo-float-xl': 'text-6xl m-2 mr-6 float-right',
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -47,5 +50,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [typography, lineClamp, aspectRatio],
+  plugins: [typography(), lineClamp, aspectRatio],
 })

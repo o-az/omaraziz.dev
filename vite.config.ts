@@ -22,9 +22,7 @@ const { default: remarkFrontmatter } = await import('remark-frontmatter')
 const { default: rehypeAutolinkHeadings } = await import('rehype-autolink-headings')
 
 // rehype-pretty-code config for syntax highlighting
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const theme = await import('./public/assets/moonight-ii.json')
+const theme = await import('./public/assets/mdx-theme/moonlight-ii.json')
 const rehypePrettyCodeOptions = {
   theme,
   onVisitLine(node: { children: { type: string; value: string }[] }) {

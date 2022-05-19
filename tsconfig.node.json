@@ -4,11 +4,18 @@
     "composite": true,
     "module": "ESNext",
     "target": "ESNext",
+    "esModuleInterop": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "types": []
   },
-  "include": ["vite.config.ts", "./vite.config.ts", "vite.config.*"],
+  "include": [
+    "vite.config.ts",
+    "./vite.config.ts",
+    "vite.config.*",
+    "/vite.config.ts",
+    "public/assets/mdx-theme/*.json"
+  ],
   "exclude": [
     "node_modules",
     ".scratch",
