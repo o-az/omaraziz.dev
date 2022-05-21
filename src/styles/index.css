@@ -11,12 +11,6 @@
   }
 }
 
-#root {
-  font-family: 'JetBrainsMono-ExtraBold';
-  color-scheme: dark;
-  -webkit-font-smoothing: antialiased;
-}
-
 @media (prefers-color-scheme: light) {
   .shiki.dark-plus {
     display: none;
@@ -29,24 +23,16 @@
   }
 }
 
-html,
 #root {
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
   scrollbar-gutter: stable;
+  color-scheme: dark;
+  font-family: 'JetBrainsMono-ExtraBold';
+  -webkit-font-smoothing: antialiased;
+  @apply w-full h-full m-0 overflow-y-auto;
 }
 
 body {
-  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  opacity: 2;
-  height: 100%;
-  width: 100%;
-}
-
-code {
-  -webkit-font-smoothing: initial;
+  @apply dark:bg-[rgb(24_24_27)] w-full h-full opacity-[0.9] m-0;
 }

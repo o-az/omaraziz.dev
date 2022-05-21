@@ -1,0 +1,8 @@
+[
+  {
+    "code": "const loremFetcher = async (id: string) => {const ipsum = await fetch(`.../${id}`); const text = await ipsum.text(); return text",
+    "language": "typescript",
+    "title": "Fetcher",
+    "description": "Typed reusable fetcher"
+  }
+]

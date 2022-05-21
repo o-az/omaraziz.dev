@@ -36,8 +36,7 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node", "@types/mdx", "vite/client", "solid-jsx/types"],
     "paths": {
-      "@/*": ["src/*"],
-      "~posts/*": ["posts/*"]
+      "@/*": ["src/*"]
     }
   },
   "references": [{ "path": "./tsconfig.node.json" }],

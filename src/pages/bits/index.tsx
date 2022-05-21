@@ -1,44 +1,29 @@
 import * as Solid from 'solid-js'
 import { Link } from 'solid-app-router'
 import { SearchIcon } from '@/components/icons'
-import postsInfo from '@/articles/_posts.json'
+import snippets from './snippets.json'
 
-type Article = typeof postsInfo[number]
-
-function filterArticles({ text, articles }: { text: string; articles: Article[] }) {
-  return articles.filter(({ title }) => text.length && title.toLowerCase().includes(text.toLowerCase()))
-}
-
-const [posts, setPosts] = Solid.createSignal(postsInfo)
-
-const searchFiltering = (event: InputEvent | Event) => {
-  const text = (event.currentTarget as HTMLInputElement).value
-  const filtered = filterArticles({ text, articles: postsInfo })
-  setPosts(() => (text.length === 0 ? postsInfo : filtered))
-}
+type Snippet = typeof snippets[number]
 
 export default function Blog() {
   return (
     <main class="m-6 mt-8 dark:text-white grid place-items-center justify-center">
-      <div class="max-w-xl min-w-xl">
+      <div class="max-w-2xl min-w-xl">
         <h1
-          class="col-span-4 row-span-1 mb-1 w-64 w-full text-left font-extrabold tracking-tight text-black dark:text-white"
+          class="col-span-4 row-span-1 mb-6 w-full w-full text-left font-extrabold tracking-tight text-black dark:text-white"
           style={{
-            'font-size': 'clamp(6rem, 80%, 200px)',
+            'font-size': 'clamp(2.5rem, 0.75rem + 1.5vw, 2rem)',
           }}
         >
-          Blog
+          Bits – Code Snippets
         </h1>
-        <SearchBar onInputChange={searchFiltering} />
         <div class="space-y-7 max-w-xl" id="articles">
-          {posts().map(({ id, title, description, date, filename, tags }) => (
+          {snippets.map(({ title, code, language, description }, index) => (
             <Link
-              href={`/blog/${filename}`}
-              id={id}
+              href={`/bits/${title}`}
+              id={`${index}`}
               title={title}
               c-description={description}
-              c-date={date}
-              c-tags={tags}
               class="m-auto border-1 border-gray-500 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
             >
               <h1 class="text-2xl">{title}</h1>

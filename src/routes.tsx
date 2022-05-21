@@ -20,8 +20,17 @@ export const ROUTES: RouteDefinition[] = [
     ],
   },
   {
-    path: '/snippets',
-    component: lazy(() => import('@/pages/snippets')),
+    path: '/bits',
+    children: [
+      {
+        path: '/',
+        component: lazy(() => import('@/pages/bits')),
+      },
+      {
+        path: '/:id',
+        component: lazy(() => import('@/pages/bits/[id]')),
+      },
+    ],
   },
   {
     path: '/projects',

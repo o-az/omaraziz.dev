@@ -55,7 +55,6 @@ const config = async (): Promise<UserConfig> => {
     resolve: {
       alias: {
         '@/': './src',
-        '~posts/': './posts',
       },
     },
     optimizeDeps: {

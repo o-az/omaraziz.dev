@@ -1,1 +1,1 @@
-export const ARTICLES_PATH = '../../../posts/files'
+export const ARTICLES_PATH = import.meta.env.PROD ? './artilces/' : '../../articles'
