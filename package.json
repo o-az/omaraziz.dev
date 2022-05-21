@@ -3,7 +3,7 @@
   "homepage": "https://omaraziz.dev",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV='development' vite",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rimraf dist node_modules && yarn install --frozen-lockfile",
@@ -22,9 +22,12 @@
     "new-blog": "yarn tsnode scripts/new-blog-post.ts name",
     "tsnode": "yarn node-options && ts-node --esm -p --skip-project -T -r tsconfig-paths/register $npm_config_path",
     "node-options": "NODE_OPTIONS=\"--experimental-fetch --no-warnings --experimental-specifier-resolution=node --trace-deprecation --abort-on-uncaught-exception\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "localtunnel": "bash scripts/localtunnel.sh"
   },
   "dependencies": {
+    "marked": "^4.0.16",
+    "showdown": "^2.1.0",
     "solid-app-router": "^0.3.2",
     "solid-js": "^1.4.1",
     "solid-use": "^0.3.3"
@@ -38,10 +41,14 @@
     "@swc/core": "^1.2.179",
     "@types/babel-core": "^6.25.7",
     "@types/eslint": "^8.4.2",
+    "@types/localtunnel": "^2.0.1",
+    "@types/marked": "^4.0.3",
     "@types/mdx": "^2.0.2",
     "@types/node": "^17.0.31",
     "@types/prettier": "^2.6.0",
+    "@types/prismjs": "^1.26.0",
     "@types/rss": "^0.0.29",
+    "@types/showdown": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "babel-preset-solid": "^1.4.0",
@@ -52,7 +59,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.0",
+    "localtunnel": "^2.0.2",
     "prettier": "^2.6.2",
+    "prismjs": "^1.28.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-highlight": "^5.0.2",
     "rehype-pretty-code": "^0.3.1",

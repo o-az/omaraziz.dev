@@ -5,7 +5,7 @@ import snippets from './snippets.json'
 
 type Snippet = typeof snippets[number]
 
-export default function Blog() {
+export default function Bits() {
   return (
     <main class="m-6 mt-8 dark:text-white grid place-items-center justify-center">
       <div class="max-w-2xl min-w-xl">
@@ -20,6 +20,7 @@ export default function Blog() {
         <div class="space-y-7 max-w-xl" id="articles">
           {snippets.map(({ title, code, language, description }, index) => (
             <Link
+              onLoadedData={() => console.log('loaded onLoadedData')}
               href={`/bits/${title}`}
               id={`${index}`}
               title={title}
@@ -33,23 +34,5 @@ export default function Blog() {
         </div>
       </div>
     </main>
-  )
-}
-
-function SearchBar(props: { onInputChange: (event: InputEvent | Event) => void }) {
-  const [{ onInputChange }] = Solid.splitProps(props, ['onInputChange'])
-  return (
-    <div class="relative mb-6 w-full w-full">
-      <input
-        onInput={onInputChange}
-        id="search"
-        type="text"
-        aria-label="Search articles"
-        placeholder="Search articles"
-        class="block w-full rounded-md border border-gray-200 bg-white px-4 py-2
-        text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
-      />
-      <SearchIcon />
-    </div>
   )
 }

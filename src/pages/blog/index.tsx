@@ -31,20 +31,22 @@ export default function Blog() {
         </h1>
         <SearchBar onInputChange={searchFiltering} />
         <div class="space-y-7 max-w-xl" id="articles">
-          {posts().map(({ id, title, description, date, filename, tags }) => (
-            <Link
-              href={`/blog/${filename}`}
-              id={id}
-              title={title}
-              c-description={description}
-              c-date={date}
-              c-tags={tags}
-              class="m-auto border-1 border-gray-500 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
-            >
-              <h1 class="text-2xl">{title}</h1>
-              <p class="break-words overflow-ellipsis">{description}</p>
-            </Link>
-          ))}
+          <Solid.For each={posts()} fallback={<p>No articles found</p>}>
+            {({ id, title, description, date, filename, tags }, index) => (
+              <Link
+                href={`/blog/${filename}`}
+                id={id}
+                title={title}
+                c-description={description}
+                c-date={date}
+                c-tags={tags}
+                class="m-auto border-1 border-gray-500 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
+              >
+                <h1 class="text-2xl">{title}</h1>
+                <p class="break-words overflow-ellipsis">{description}</p>
+              </Link>
+            )}
+          </Solid.For>
         </div>
       </div>
     </main>

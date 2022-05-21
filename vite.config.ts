@@ -2,7 +2,7 @@
 /// <reference types="vitest" />
 
 // Plugins
-import type { UserConfig } from 'vite'
+import type { UserConfig, ProxyOptions } from 'vite'
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
 import WindiCSS from 'vite-plugin-windicss'
@@ -47,11 +47,25 @@ const mdxConfig: MdxOptions = {
   rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
 }
 
+/** Overcome CORS pain on localhost */
+const viteProxy: Record<string, string | ProxyOptions> = {
+  // cloudflare worker
+  '/cf-worker': {
+    target: 'https://test-cw.0101010.workers.dev',
+    changeOrigin: true,
+    secure: false,
+    rewrite: (path: string) => path.replace('/cf-worker', ''),
+  },
+}
 /** Vite config */
 const config = async (): Promise<UserConfig> => {
   return {
     plugins: [solid(), WindiCSS(), tsconfigPaths(), mdx(mdxConfig)],
-    server: { host: '0.0.0.0', port: 3000 },
+    server: {
+      host: '0.0.0.0',
+      port: 3000,
+      proxy: process.env.NODE_ENV ? viteProxy : undefined,
+    },
     resolve: {
       alias: {
         '@/': './src',

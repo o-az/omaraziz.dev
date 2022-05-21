@@ -3,14 +3,11 @@
 ```
 
 ```ts
-
 const loremFetcher = async (id: string) => {
   const ipsum = await fetch(`.../${id}`)
   const text = await ipsum.text()
   return text
 }
-
-
 ```
 
 ```py
