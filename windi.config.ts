@@ -25,9 +25,8 @@ export default defineConfig({
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', 'IBM Plex Serif', ...defaultTheme.fontFamily.sans],
-        serif: ['IBM Plex Serif', 'Inter var', ...defaultTheme.fontFamily.serif],
-        body: ['Inter var'],
+        sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.sans],
+        serif: ['IBM Plex Sans', ...defaultTheme.fontFamily.serif],
       },
       backgroundOpacity: {
         15: '0.15',

@@ -1,14 +1,31 @@
+```html
+<p>Hello, world!</p>
+```
+
 ```ts
-export const ArrayToChunks = (array: Array<string>, chunkSize: number): Array<string>[] => {
-  const items = new Array(Math.ceil(array.length / chunkSize))
-  return items.fill(0).map(() => array.splice(0, chunkSize))
+
+const loremFetcher = async (id: string) => {
+  const ipsum = await fetch(`.../${id}`)
+  const text = await ipsum.text()
+  return text
 }
 
-export const getTimestamp = () => {
-  const [timestamp] = new Date().toISOString().split('T')
-  return timestamp
+
+```
+
+```py
+def loremFetcher(id):
+  ipsum = requests.get(f'.../{id}')
+  text = ipsum.text
+  return text
+
+
+```
+
+```c
+#include <stdio.h>
+// write hello world
+void helloWorld() {
+  printf("Hello, world!\n");
 }
-
-export const nonNullable = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined
-
 ```

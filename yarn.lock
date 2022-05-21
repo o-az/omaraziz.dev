@@ -699,6 +699,11 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.6.1.tgz#76e72d8a775eef7ce649c63c8acae1a0824bbaed"
   integrity sha512-XFjFHmaLVifrAKaZ+EKghFHtHSUonyw8P2Qmy2/+osBnrKbH9UYtlK10zg8/kCt47MFilll/DEDKy3DHfJ0URw==
 
+"@types/prismjs@^1.26.0":
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.26.0.tgz#a1c3809b0ad61c62cac6d4e0c56d610c910b7654"
+  integrity sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==
+
 "@types/rss@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/rss/-/rss-0.0.29.tgz#1f2b37a863021c56398bf913fd02efad484123c8"
@@ -3502,6 +3507,11 @@ solid-refresh@^0.4.0:
     "@babel/generator" "^7.16.0"
     "@babel/helper-module-imports" "^7.16.0"
     "@babel/types" "^7.16.0"
+
+solid-use@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/solid-use/-/solid-use-0.3.3.tgz#07ecf41e1b3b6024aa50658e3ba13000fa22b9b7"
+  integrity sha512-94XOf4ouYrDzLLvRFw5oDEZPIaOKXCkdHFFDsCrFNUKxCtnbWJyiBP2iN90L79U6zvpzzanrjw09IKlShRdZMA==
 
 source-map-js@^1.0.2:
   version "1.0.2"

@@ -28,6 +28,7 @@ module.exports = {
     },
   },
   rules: {
+    'prefer-const': ['off'],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'jsx-a11y/accessible-emoji': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

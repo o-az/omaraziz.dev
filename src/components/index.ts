@@ -1,3 +1,6 @@
 export * from './footer'
 export * from './header'
 export * from './toggle'
+export * from './search-bar'
+// export * from './snippet'
+// export * from './render-markdown'

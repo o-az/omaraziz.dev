@@ -8,10 +8,10 @@ const App: Component = () => {
   const Route = useRoutes(ROUTES)
 
   return (
-    <main>
+    <>
       <Header />
       <Route />
-    </main>
+    </>
   )
 }
 
