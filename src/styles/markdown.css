@@ -35,7 +35,6 @@ code {
   @apply hover:bg-gray-700 rounded-xl selection:text-light-50 selection:bg-gray-900 leading-[1.55rem] rounded-xl p-0 bg-gray-100 dark:bg-gray-900 hover:dark:bg-gray-800 min-w-full;
 }
 
-
 [data-line-numbers] {
   counter-reset: line;
 }

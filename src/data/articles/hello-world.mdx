@@ -3,9 +3,10 @@ title: Hello, World!
 ---
 
 # {title}
-___
 
-# 
+---
+
+#
 
 ## Bower
 
@@ -15,17 +16,17 @@ ___
 
 ## Table
 
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
+| a   | b   |   c |  d  |
+| --- | :-- | --: | :-: |
 
 ## Tasklist
 
-* [ ] to do
-* [x] done
+- [ ] to do
+- [x] done
+
 ---
 
-test ```hello``` world
-
+test `hello` world
 
 ```ts showLineNumbers
 const loremFetcher = async (id: string) => {
@@ -34,7 +35,9 @@ const loremFetcher = async (id: string) => {
   return text
 }
 ```
-___
+
+---
+
 ```lua
 local function loremFetcher(id: string)
   local ipsum = http.request(`.../${id}`)

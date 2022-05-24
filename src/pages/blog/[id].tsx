@@ -14,7 +14,7 @@ export default function BlogPost() {
 
   return (
     <>
-      <main class="m-auto p-4 dark:text-white text-gray-900 flex flex-col w-[45rem] max-w-full justify-center border-red-300 border-">
+      <main class="m-auto p-4 dark:text-white text-gray-900 flex flex-col w-[45rem] max-w-full justify-center">
         <section>
           <Markdown />
         </section>
