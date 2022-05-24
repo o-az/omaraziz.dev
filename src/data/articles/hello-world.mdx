@@ -2,9 +2,13 @@
 title: Hello, World!
 ---
 
+import { testVariable } from '../../data/articles/test1.mdx'
+
 # {title}
 
 ---
+
+{testVariable}
 
 #
 
@@ -27,7 +31,7 @@ title: Hello, World!
 ---
 
 test `hello` world
-
+___
 ```ts showLineNumbers
 const loremFetcher = async (id: string) => {
   const ipsum = await fetch(`.../${id}`)
@@ -45,7 +49,7 @@ local function loremFetcher(id: string)
   return text
 end
 ```
-
+___
 ```java
 public class LoremFetcher {
   public static String loremFetcher(String id) {

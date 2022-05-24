@@ -17,22 +17,30 @@ html.light {
 
 [data-rehype-pretty-code-fragment] {
   @apply w-full w-[100%];
+  @apply leading-[1.55rem] rounded-xl min-w-full my-3;
 }
 
 pre {
   overflow: auto;
   /* word-wrap: break-word; */
   word-break: break-all;
-  @apply border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900 min-w-full;
+  /* @apply border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900 min-w-full; */
 }
 
 code {
   font-family: 'JetBrainsMono-Regular' !important;
-  @apply py-1 rounded-lg hover:bg-gray-600 hover:text-white text-gray-800 dark:text-zinc-50 py-0.5 dark:border-gray-800 bg-gray-100 dark:bg-black p-2 min-w-full;
+  @apply py-1 rounded-lg hover:bg-gray-200 hover:dark:bg-transparent hover:text-white text-gray-800 dark:text-zinc-50 py-0.5 dark:border-gray-800 bg-gray-100 dark:bg-black p-2 min-w-full;
 }
 
 [data-language] {
-  @apply hover:bg-gray-700 rounded-xl selection:text-light-50 selection:bg-gray-900 leading-[1.55rem] rounded-xl p-0 bg-gray-100 dark:bg-gray-900 hover:dark:bg-gray-800 min-w-full;
+  @apply hover:bg-zinc-200 rounded-xl selection:text-light-50 selection:bg-gray-900 leading-[1.55rem] rounded-xl p-0 bg-zinc-100 dark:bg-gray-900 hover:dark:bg-transparent min-w-full bg-transparent;
+}
+
+[data-rehype-pretty-code-fragment] > code,
+[data-rehype-pretty-code-fragment] > pre,
+[data-rehype-pretty-code-fragment] > div {
+  @apply py-4 pl-12 px-5 m-1 border dark:border-zinc-800 border-zinc-300 hover:bg-zinc-200 rounded-xl selection:text-light-50 selection:bg-gray-900 bg-zinc-100 dark:bg-gray-900 hover:dark:bg-transparent bg-zinc-100;
+  /* @apply  border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900 min-w-full; */
 }
 
 [data-line-numbers] {
@@ -44,11 +52,6 @@ code {
   content: counter(line);
   @apply text-gray-300 text-right mr-4 inline-block;
 }
-
-[data-rehype-pretty-code-fragment] > pre {
-  @apply my-3 p-3;
-}
-
 /* from Prism */
 /*
 .copy-to-clipboard-button {

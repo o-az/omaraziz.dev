@@ -2,11 +2,8 @@ import '@/styles/markdown.css'
 import * as Solid from 'solid-js'
 import { useParams } from 'solid-app-router'
 import { ARTICLES_PATH } from '@/constants'
-import { template } from 'solid-js/web'
-import html from 'solid-js/html'
 
 type Params = { id: string }
-// import Markdown from '../../data/articles/hello-world.mdx'
 
 export default function BlogPost() {
   const { id: filename } = useParams<Params>()

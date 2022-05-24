@@ -1,8 +1,9 @@
-name = "wrangler"
-type = "webpack"
-route = ''
-zone_id = ''
-usage_model = ''
-compatibility_flags = []
+name = "worker"
 workers_dev = true
-compatibility_date = "2022-05-21"
+main = './index.html'
+account_id = "process.env.CLOUDFLARE_ACCOUNT_ID"
+tsconfig = "./tsconfig.json"
+[dev]
+  ip = "0.0.0.0"
+  port = 3000
+  local_protocol = "https"

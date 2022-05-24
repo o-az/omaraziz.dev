@@ -19,10 +19,10 @@ const searchFiltering = (event: Event) => {
 
 export default function Blog() {
   return (
-    <main class="m-6 mt-8 dark:text-white grid place-items-center justify-center">
-      <div class="max-w-xl min-w-xl">
+    <main class="m-3 mt-8 dark:text-white flex justify-center">
+      <div class="max-w-xl w-full">
         <h1
-          class="col-span-4 row-span-1 mb-1 w-64 w-full text-left font-extrabold tracking-tight text-black dark:text-white"
+          class="col-span-4 row-span-1 mb-1 min-w-full text-left font-extrabold tracking-tight text-black dark:text-white"
           style={{
             'font-size': 'clamp(6rem, 80%, 200px)',
           }}
@@ -30,7 +30,7 @@ export default function Blog() {
           Blog
         </h1>
         <SearchBar onInputChange={searchFiltering} />
-        <div class="space-y-7 max-w-xl" id="articles">
+        <div class="space-y-7 max-w-xl min-w-full" id="articles">
           <Solid.For each={posts()} fallback={<p>No articles match your search</p>}>
             {({ id, title, description, date, filename, tags }, index) => (
               <Link
@@ -40,10 +40,10 @@ export default function Blog() {
                 c-description={description}
                 c-date={date}
                 c-tags={tags}
-                class="m-auto border-1 border-gray-500 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
+                class="m-auto border-1 border-gray-600 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
               >
-                <h1 class="text-2xl">{title}</h1>
-                <p class="break-words overflow-ellipsis">{description}</p>
+                <h1 class="text-xl dark:text-light-50 tracking-wide font-semibold">{title}</h1>
+                <p class="break-words overflow-ellipsis antialiased">{description}</p>
               </Link>
             )}
           </Solid.For>
@@ -64,7 +64,7 @@ function SearchBar(props: { onInputChange: (event: InputEvent | Event) => void }
         aria-label="Search articles"
         placeholder="Search articles"
         class="block w-full rounded-md border border-gray-200 bg-white px-4 py-2
-        text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+        text-gray-900 focus:border-blue-200 focus:ring-blue-200 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 ring-transparent ring-0 focus:ring-transparent focus:ring-offset-transparent focus:outline-gray-200"
       />
       <SearchIcon />
     </div>

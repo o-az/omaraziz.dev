@@ -1,5 +1,5 @@
-export const ARTICLES_PATH = '@/data/articles'
-export const SNIPPETS_PATH = '@/data/snippets'
+export const ARTICLES_PATH = '../../data/articles'
+export const SNIPPETS_PATH = '../../data/snippets'
 
 export const CLOUDFLARE_WORKERS_URL = {
   snippets: {

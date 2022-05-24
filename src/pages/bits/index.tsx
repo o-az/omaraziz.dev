@@ -1,36 +1,40 @@
 import * as Solid from 'solid-js'
 import { Link } from 'solid-app-router'
 import { SearchIcon } from '@/components/icons'
-import snippets from './snippets.json'
+import snippets from '@/data/snippets/snippets.json'
 
 type Snippet = typeof snippets[number]
 
 export default function Bits() {
   return (
-    <main class="m-6 mt-8 dark:text-white grid place-items-center justify-center">
-      <div class="max-w-2xl min-w-xl">
+    <main class="m-3 mt-8 dark:text-white flex justify-center h-full">
+      <div class="max-w-2xl w-full">
         <h1
-          class="col-span-4 row-span-1 mb-6 w-full w-full text-left font-extrabold tracking-tight text-black dark:text-white"
+          class="col-span-4 row-span-1 mb-1 min-w-full text-left font-extrabold tracking-tight text-black dark:text-white"
           style={{
-            'font-size': 'clamp(2.5rem, 0.75rem + 1.5vw, 2rem)',
+            'font-size': 'clamp(4rem, 80%, 200px)',
           }}
         >
-          Bits – Code Snippets
+          Bits
         </h1>
-        <div class="space-y-7 max-w-xl" id="articles">
-          {snippets.map(({ title, code, language, description }, index) => (
-            <Link
-              onLoadedData={() => console.log('loaded onLoadedData')}
-              href={`/bits/${title}`}
-              id={`${index}`}
-              title={title}
-              c-description={description}
-              class="m-auto border-1 border-gray-500 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
-            >
-              <h1 class="text-2xl">{title}</h1>
-              <p class="break-words overflow-ellipsis">{description}</p>
-            </Link>
-          ))}
+        <div class="max-w-xl min-w-full grid sm:grid-cols-3 grid-cols-2 gap-6" id="articles">
+          <Solid.For each={snippets} fallback={<p>No articles match your search</p>}>
+            {({ title, description }, index) => (
+              <Link
+                href="/"
+                // href={`/blog/${filename}`}
+                // id={id}
+                title={title}
+                c-description={description}
+                // c-date={date}
+                // c-tags={tags}
+                class="m-auto border-1 border-gray-600 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
+              >
+                <h1 class="text-xl dark:text-light-50 tracking-wide font-semibold">{title}</h1>
+                <p class="break-words overflow-ellipsis antialiased">{description}</p>
+              </Link>
+            )}
+          </Solid.For>
         </div>
       </div>
     </main>

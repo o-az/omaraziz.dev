@@ -23,7 +23,7 @@ export default function Home() {
     <main class="mt-28 relative grid grid-flow-col items-center text-center text-white selection:bg-red-400 selection:text-light-50 ">
       <section class="grid items-center">
         <p
-          class="mb-1 font-bold tracking-tight text-black selection:bg-red-400 dark:text-[#f7f7f7] jet-brains"
+          class="mb-1 font-bold text-black selection:bg-red-400 dark:text-[#f7f7f7] jet-brains"
           style={{
             // clamp(A, B, C)
             // element is B% of parent, size: A < element size < C
