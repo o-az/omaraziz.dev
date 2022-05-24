@@ -36,7 +36,7 @@ export function Header() {
         {HEADER_ITEMS.map(({ name, path }) => (
           <Link
             href={path}
-            class="hidden rounded-lg font-normal text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 sm:px-3 sm:py-1 md:inline-block md:w-auto md:text-lg"
+            class="hidden rounded-lg font-normal text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 sm:px-3 sm:py-1 md:inline-block md:w-auto md:text-lg hover:dark:text-gray-50"
           >
             {name}
           </Link>

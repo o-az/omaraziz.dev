@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "title": "Vite CORS Proxy",
+    "description": "Overcome CORS pain when developing on localhost.",
+    "date": "2022-05-23",
+    "filename": "vite-cors-proxy",
+    "tags": ["cors", "vite", "proxy"]
+  }
+]
+

@@ -1,7 +1,7 @@
 import * as Solid from 'solid-js'
 import { Link } from 'solid-app-router'
 import { SearchIcon } from '@/components/icons'
-import postsInfo from '@/articles/_posts.json'
+import postsInfo from '@/data/articles/articles.json'
 
 type Article = typeof postsInfo[number]
 
@@ -11,7 +11,7 @@ function filterArticles({ text, articles }: { text: string; articles: Article[] 
 
 const [posts, setPosts] = Solid.createSignal(postsInfo)
 
-const searchFiltering = (event: InputEvent | Event) => {
+const searchFiltering = (event: Event) => {
   const text = (event.currentTarget as HTMLInputElement).value
   const filtered = filterArticles({ text, articles: postsInfo })
   setPosts(() => (text.length === 0 ? postsInfo : filtered))
@@ -31,7 +31,7 @@ export default function Blog() {
         </h1>
         <SearchBar onInputChange={searchFiltering} />
         <div class="space-y-7 max-w-xl" id="articles">
-          <Solid.For each={posts()} fallback={<p>No articles found</p>}>
+          <Solid.For each={posts()} fallback={<p>No articles match your search</p>}>
             {({ id, title, description, date, filename, tags }, index) => (
               <Link
                 href={`/blog/${filename}`}

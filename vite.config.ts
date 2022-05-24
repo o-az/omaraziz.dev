@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="vitest" />
 
-// Plugins
+import { resolve } from 'path'
 import type { UserConfig, ProxyOptions } from 'vite'
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
@@ -10,41 +10,67 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 /** MDX config */
 // MDX Plugins
-import rehypePrettyCode from 'rehype-pretty-code'
 const { default: mdx } = await import('@mdx-js/rollup')
 import type { Options as MdxOptions } from '@mdx-js/rollup'
-// const { default: remarkGfm } = await import('remark-gfm')
-// const { default: rehypeSlugs } = await import('rehype-slug')
-// const { default: rehypeHighlight } = await import('rehype-highlight')
-// const { remarkMdxFrontmatter } = await import('remark-mdx-frontmatter')
-// const { default: remarkFrontmatter } = await import('remark-frontmatter')
-// const { default: rehypeAutolinkHeadings } = await import('rehype-autolink-headings')
+const { default: remarkGfm } = await import('remark-gfm')
+import type { Options as RemarkGfmOptions } from 'remark-gfm'
+const { remarkMdxFrontmatter } = await import('remark-mdx-frontmatter')
+const { default: remarkFrontmatter } = await import('remark-frontmatter')
 
-// const theme = await import('./public/assets/mdx-theme/moonlight-ii.json')
-const rehypePrettyCodeOptions = {
-  theme: await import('./public/assets/mdx-theme/moonlight-ii.json'),
-  onVisitLine(node: { children: { type: string; value: string }[] }) {
+const { default: rehypeSlugs } = await import('rehype-slug')
+// import 'highlight.js'
+// const { default: rehypeHighlight } = await import('rehype-highlight')
+const { default: rehypeCodeTitles } = await import('rehype-code-titles')
+const { default: rehypeAutolinkHeadings } = await import('rehype-autolink-headings')
+const { default: rehypePrettyCode } = await import('rehype-pretty-code')
+import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code'
+const { default: rehypeTheme } = await import('./public/assets/mdx-theme/moonlight-ii.json')
+
+const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
+  theme: {
+    dark: JSON.parse(JSON.stringify(rehypeTheme)),
+    light: 'github-light',
+  },
+  tokensMap: {
+    fn: 'entity.name.function',
+  },
+  // getHighlighter: async options => {
+  //   const { getHighlighter, BUNDLED_LANGUAGES } = await import('shiki')
+  //   return getHighlighter({ ...options, theme: 'one-dark-pro', langs: [...BUNDLED_LANGUAGES] })
+  // },
+  onVisitLine: node => {
     if (node.children.length === 0) node.children = [{ type: 'text', value: ' ' }]
   },
-  onVisitHighlightedLine(node: { properties: { className: string[] } }) {
-    node.properties.className.push('line--highlighted')
-  },
-  onVisitHighlightedWord(node: { properties: { className: string[] } }) {
-    node.properties.className = ['word']
-  },
+  onVisitHighlightedLine: node => node.properties.className.push('highlighted'),
+  onVisitHighlightedWord: node => (node.properties.className = ['word']),
+}
+
+const remarkGfmOptions: RemarkGfmOptions = {
+  singleTilde: true,
+  tablePipeAlign: true,
+  stringLength: (str: string) => str.length,
 }
 
 const mdxConfig: MdxOptions = {
   jsxImportSource: 'solid-jsx',
-  remarkPlugins: [
-    // remarkGfm,
-    // rehypeSlugs,
+  useDynamicImport: true,
+  rehypePlugins: [
     // rehypeHighlight,
-    // remarkFrontmatter,
-    // remarkMdxFrontmatter,
-    // rehypeAutolinkHeadings,
+    [rehypePrettyCode, rehypePrettyCodeOptions],
+    rehypeSlugs,
+    // [rehypeShiki, { theme: 'nord', useBackground: true }],
+    [
+      rehypeAutolinkHeadings,
+      {
+        properties: {
+          className: ['anchor'],
+        },
+      },
+    ],
+    // rehypeCodeTitles,
   ],
-  rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+  remarkPlugins: [[remarkGfm, remarkGfmOptions], remarkFrontmatter, remarkMdxFrontmatter],
+  development: process.env.NODE_ENV === 'development',
 }
 
 /** Overcome CORS pain on localhost */
@@ -74,7 +100,7 @@ const config = async (): Promise<UserConfig> => {
     optimizeDeps: {
       include: ['solid-js/h/jsx-runtime'],
     },
-    build: { target: 'esnext', polyfillDynamicImport: false },
+    build: { target: 'esnext', polyfillDynamicImport: false, rollupOptions: {} },
     /** vitest */
     test: { globals: true },
   }

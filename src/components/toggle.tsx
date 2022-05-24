@@ -2,14 +2,21 @@ import * as Solid from 'solid-js'
 
 type Theme = 'light' | 'dark'
 
-const htmlTag = document.querySelector<HTMLLinkElement>('html') as HTMLLinkElement
+const htmlTag = document.querySelector<HTMLLinkElement>('html') as HTMLElement
 const current: Theme = window && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 const [theme, setTheme] = Solid.createSignal<Theme>(current)
 
 const toggleTheme = () => {
+  const nextTheme = theme() === 'light' ? 'dark' : 'light'
   setTheme(() => {
-    const nextTheme = theme() === 'light' ? 'dark' : 'light'
     htmlTag.setAttribute('class', nextTheme)
+    // Update code syntax highlighting theme
+    document.querySelectorAll('[data-theme]').forEach(element => {
+      const currentDataTheme = element.getAttribute('data-theme')
+      currentDataTheme !== nextTheme
+        ? ((element as HTMLElement).style.display = 'none')
+        : ((element as HTMLElement).style.display = 'block')
+    })
     return nextTheme
   })
 }
@@ -19,7 +26,7 @@ export function Toggle() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      class="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 ring-gray-300 transition-all hover:ring-2 dark:bg-gray-600"
+      class="relative flex h-9 w-9 items-center justify-center rounded-lg bg-transparent ring-gray-500 transition-all hover:ring-1 dark:bg-transparent rounded-full"
       onClick={toggleTheme}
     >
       <svg
@@ -27,7 +34,7 @@ export function Toggle() {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        class="h-5 w-5 text-gray-800 dark:text-gray-200"
+        class="h-6 w-6 text-gray-800 dark:text-gray-200"
       >
         <path
           stroke-linecap="round"

@@ -26,8 +26,6 @@
     "localtunnel": "bash scripts/localtunnel.sh"
   },
   "dependencies": {
-    "marked": "^4.0.16",
-    "showdown": "^2.1.0",
     "solid-app-router": "^0.3.2",
     "solid-js": "^1.4.1",
     "solid-use": "^0.3.3"
@@ -58,13 +56,16 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "highlight.js": "^11.5.1",
     "husky": "^7.0.0",
     "localtunnel": "^2.0.2",
     "prettier": "^2.6.2",
     "prismjs": "^1.28.0",
     "rehype-autolink-headings": "^6.1.1",
+    "rehype-code-titles": "^1.0.3",
     "rehype-highlight": "^5.0.2",
     "rehype-pretty-code": "^0.3.1",
+    "rehype-prism-plus": "^1.4.0",
     "rehype-slug": "^5.0.1",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",

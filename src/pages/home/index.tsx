@@ -20,10 +20,10 @@ export const LINKS: ReadonlyArray<LinkItem> = [
 
 export default function Home() {
   return (
-    <main class="mt-28 relative grid grid-flow-col items-center text-center text-white">
+    <main class="mt-28 relative grid grid-flow-col items-center text-center text-white selection:bg-red-400 selection:text-light-50 ">
       <section class="grid items-center">
         <p
-          class="mb-1 font-bold tracking-tight text-black selection:bg-red-400 dark:text-[#f7f7f7]"
+          class="mb-1 font-bold tracking-tight text-black selection:bg-red-400 dark:text-[#f7f7f7] jet-brains"
           style={{
             // clamp(A, B, C)
             // element is B% of parent, size: A < element size < C
@@ -34,11 +34,11 @@ export default function Home() {
         </p>
         <ul class="flex justify-center space-x-8 text-xl md:text-4xl">
           {LINKS.map(({ name, path }) => (
-            <li class="rounded-lg p-1 text-[26px] font-normal text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 sm:px-3 sm:py-2 md:inline-block">
-              <a href={path} target="_blank" rel="noreferrer" class="hover:text-light-100">
+            <a href={path} target="_blank" rel="noreferrer" class="hover:text-light-100">
+              <li class="rounded-lg p-1 text-[26px] font-normal text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-400 dark:hover:text-light-100 dark:hover:bg-gray-800 sm:px-3 sm:py-2 md:inline-block">
                 {name}
-              </a>
-            </li>
+              </li>
+            </a>
           ))}
         </ul>
         <p class="text-2xl p-20 leading-10"></p>
