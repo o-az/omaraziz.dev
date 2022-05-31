@@ -14,7 +14,7 @@
     "test": "vitest",
     "test-file": "yarn node-options && vitest $npm_config_path",
     "test:nowatch": "vitest --run",
-    "lint": "npx eslint --fix ./src ./scripts --ext js,jsx,ts,tsx,md,mdx",
+    "lint": "npx eslint --fix ./src ./scripts --ext js,jsx,ts,tsx",
     "lint:prod": "NODE_ENV=production npx eslint --fix ./src ./scripts",
     "format": "npx prettier --write ./src ./scripts",
     "pre-commit": "yarn lint && yarn format && yarn test:nowatch",
