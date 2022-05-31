@@ -55,7 +55,7 @@
     "@types/rss": "^0.0.29",
     "@types/showdown": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
+    "@typescript-eslint/parser": "^5.27.0",
     "babel-preset-solid": "^1.4.0",
     "clsx": "^1.1.1",
     "eslint": "^8.15.0",
