@@ -123,11 +123,7 @@ const config = async (): Promise<UserConfig> => {
     },
     build: {
       target: 'esnext',
-      watch: {},
       polyfillDynamicImport: false,
-      rollupOptions: {
-        output: {},
-      },
     },
     clearScreen: false,
     /** vitest */
