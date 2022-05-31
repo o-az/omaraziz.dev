@@ -7,7 +7,7 @@ import defaultTheme from 'windicss/defaultTheme'
 export default defineConfig({
   attributify: true,
   extract: {
-    include: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+    include: ['./index.html', './src/**/*.{js,ts,jsx,tsx,css,scss,sass,less,styl}'],
   },
   darkMode: 'class',
   alias: {

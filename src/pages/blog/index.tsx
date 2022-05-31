@@ -1,4 +1,5 @@
 import * as Solid from 'solid-js'
+import clsx from 'clsx'
 import { Link } from 'solid-app-router'
 import { SearchIcon } from '@/components/icons'
 import postsInfo from '@/data/articles/articles.json'
@@ -19,37 +20,42 @@ const searchFiltering = (event: Event) => {
 
 export default function Blog() {
   return (
-    <main class="m-3 mt-8 dark:text-white flex justify-center">
-      <div class="max-w-xl w-full">
-        <h1
-          class="col-span-4 row-span-1 mb-1 min-w-full text-left font-extrabold tracking-tight text-black dark:text-white"
-          style={{
-            'font-size': 'clamp(6rem, 80%, 200px)',
-          }}
-        >
-          Blog
-        </h1>
-        <SearchBar onInputChange={searchFiltering} />
-        <div class="space-y-7 max-w-xl min-w-full" id="articles">
-          <Solid.For each={posts()} fallback={<p>No articles match your search</p>}>
-            {({ id, title, description, date, filename, tags }, index) => (
-              <Link
-                href={`/blog/${filename}`}
-                id={id}
-                title={title}
-                c-description={description}
-                c-date={date}
-                c-tags={tags}
-                class="m-auto border-1 border-gray-600 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
-              >
-                <h1 class="text-xl dark:text-light-50 tracking-wide font-semibold">{title}</h1>
-                <p class="break-words overflow-ellipsis antialiased">{description}</p>
-              </Link>
-            )}
-          </Solid.For>
+    <Solid.ErrorBoundary fallback={<></>}>
+      <main class="m-3 mt-8 dark:text-white flex justify-center">
+        <div class="max-w-xl w-full">
+          <h1
+            class="col-span-4 row-span-1 mb-1 min-w-full text-left font-extrabold tracking-wide text-black dark:text-white ibm-plex-sans-bold"
+            style={{
+              'font-size': 'clamp(6rem, 80%, 200px)',
+            }}
+          >
+            Blog
+          </h1>
+          <SearchBar onInputChange={searchFiltering} />
+          <div class="space-y-7 max-w-xl min-w-full" id="articles">
+            <Solid.For
+              each={posts()}
+              fallback={<p class="text-zinc-800 dark:text-light-50">No articles match your search</p>}
+            >
+              {({ title, description, date, filename, tags }, index) => (
+                <Link
+                  href={`/blog/${filename}`}
+                  id={`${index}`}
+                  title={title}
+                  data-description={description}
+                  data-date={date}
+                  data-tags={tags}
+                  class="m-auto border-1 border-gray-600 text-gray-800 hover:border-gray-700 rounded-md hover:bg-gray-900 hover:cursor-pointer p-4.5 flex flex-col space-y-2 dark:text-gray-200 hover:text-light-900"
+                >
+                  <h1 class="text-xl dark:text-light-50 tracking-wide font-semibold">{title}</h1>
+                  <p class="break-words overflow-ellipsis antialiased">{description}</p>
+                </Link>
+              )}
+            </Solid.For>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Solid.ErrorBoundary>
   )
 }
 
@@ -60,11 +66,13 @@ function SearchBar(props: { onInputChange: (event: InputEvent | Event) => void }
       <input
         onInput={onInputChange}
         id="search"
-        type="text"
+        // type="text"
         aria-label="Search articles"
         placeholder="Search articles"
-        class="block w-full rounded-md border border-gray-200 bg-white px-4 py-2
-        text-gray-900 focus:border-blue-200 focus:ring-blue-200 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 ring-transparent ring-0 focus:ring-transparent focus:ring-offset-transparent focus:outline-gray-200"
+        class={clsx(
+          'dark:bg-gray-800 dark:bg-opacity-40 dark:text-gray-100 dark:placeholder-zinc-400 dark:border-rose-50 dark:border-opacity-20',
+          'ring-0 outline-0 focus:outline-none block w-full rounded-md border border-solid border-pink-200 bg-white px-4 py-2 text-gray-800 ring-transparent focus:ring-transparent focus:ring-offset-transparent outline-transparent ring-1 ring-opacity-30 focus:ring-zink-500'
+        )}
       />
       <SearchIcon />
     </div>

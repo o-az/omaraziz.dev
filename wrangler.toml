@@ -1,9 +1,11 @@
-name = "worker"
-workers_dev = true
-main = './index.html'
-account_id = "process.env.CLOUDFLARE_ACCOUNT_ID"
-tsconfig = "./tsconfig.json"
-[dev]
-  ip = "0.0.0.0"
-  port = 3000
-  local_protocol = "https"
+# WRANGLER DOESN'T CARE ABOUT WRANGLER.TOML WHEN RUNNING "wrangler pages dev"
+
+# name = "omaraziz-worker"
+# workers_dev = true
+# # main = './index.html'
+# account_id = "process.env.CLOUDFLARE_ACCOUNT_ID"
+# tsconfig = "./tsconfig.json"
+# [dev]
+# ip = "0.0.0.0"
+# port = 3002
+# # local_protocol = "https"

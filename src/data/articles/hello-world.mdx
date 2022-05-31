@@ -1,61 +1,34 @@
 ---
 title: Hello, World!
+path: /hello-world
+date: 2022-05-15
+layout: article
 ---
-
-import { testVariable } from '../../data/articles/test1.mdx'
 
 # {title}
 
 ---
 
-{testVariable}
 
-#
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
 
 ## Bower
 
-    ```sh
+    ```sh id="xyz"
     bower install --save-dev jquery
     ```
-
-## Table
-
-| a   | b   |   c |  d  |
-| --- | :-- | --: | :-: |
-
-## Tasklist
-
-- [ ] to do
-- [x] done
-
 ---
 
 test `hello` world
-___
-```ts showLineNumbers
+
+---
+
+```ts showLineNumbers title="src/utilities/fetcher.tsx"
 const loremFetcher = async (id: string) => {
   const ipsum = await fetch(`.../${id}`)
   const text = await ipsum.text()
   return text
-}
-```
-
----
-
-```lua
-local function loremFetcher(id: string)
-  local ipsum = http.request(`.../${id}`)
-  local text = ipsum.text()
-  return text
-end
-```
-___
-```java
-public class LoremFetcher {
-  public static String loremFetcher(String id) {
-    String ipsum = http.request(`.../${id}`)
-    String text = ipsum.text()
-    return text
-  }
 }
 ```

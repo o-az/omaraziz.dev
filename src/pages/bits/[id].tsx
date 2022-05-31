@@ -1,59 +1,65 @@
 import * as Solid from 'solid-js'
 import html from 'solid-js/html'
-import { useParams } from 'solid-app-router'
+import { RouteDataFuncArgs, useParams } from 'solid-app-router'
 import { Snippet } from '@/components'
-import { useRouteData } from 'solid-app-router'
+import { useRouteData, useResolvedPath } from 'solid-app-router'
 import type { SnippetWorkerResponse, RouteDataFetchResponse } from '@/types'
 import { fetcher, parseStringHTML } from '@/utilities'
+import { createScriptLoader } from '@solid-primitives/script-loader'
 import { CLOUDFLARE_WORKERS_URL } from '@/constants'
+import { template } from 'solid-js/web'
+// import rehypeHighlight from 'rehype-highlight'
+// import "@/styles/markdown.css"
+// import Prism from 'prismjs'
+// import 'prismjs/components/prism-haml'
+// import 'prismjs/components/prism-markdown'
+// import 'prismjs/components/prism-typescript'
 
-type Params = { id: string }
+// import 'prismjs/plugins/line-highlight/prism-line-highlight'
+// import 'prismjs/plugins/match-braces/prism-match-braces'
+// import 'prismjs/plugins/autoloader/prism-autoloader'
+// import 'prismjs/plugins/filter-highlight-all/prism-filter-highlight-all'
+// import 'prismjs/plugins/treeview/prism-treeview'
+// import 'prismjs/themes/prism-okaidia.css'
 
-const getSnippetData = async () => {
-  try {
-    const url = CLOUDFLARE_WORKERS_URL.snippets.proxy
-    const { data, error } = await fetcher<SnippetWorkerResponse>(url)
-    console.log(data, error)
-    return data
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : `Encoutered an error: ` + error
-    console.trace(errorMessage)
-    return 'error'
-  }
+interface SnippetData {
+  code: string
+  language: string
+  title: string
+  description: string
 }
 
-export default function Bit() {
-  const { id: snippetId } = useParams<Params>()
-  const [data, setData] = Solid.createSignal()
-  // console.log(getSnippetData())
-  const [resource, { mutate, refetch }] = Solid.createResource(() => snippetId, getSnippetData)
-  console.log(resource())
+const fetchSnippet = async () => {
+  const url = CLOUDFLARE_WORKERS_URL.snippets.proxy
+  const response = await fetch(url)
+  const data = await response.json<SnippetData>()
+  return data
+}
 
+const code = `const snippet = "cool markdown highlighting!";`
+// const highlighted = Prism.highlight(code, (Prism.languages as unknown as any).typescript, 'typescript')
+// console.log(highlighted)
+
+export default function Bit() {
+  const { id: snippetId } = useParams<{ id: string }>()
+  // const [bits] = Solid.createResource(() => snippetId, fetchSnippet)
+  // Solid.createEffect(() => {
+  //   Prism.highlightAll()
+  // })
   return (
     <main class="m-6 p-4 dark:text-white flex max-w-full justify-center">
-      {/* <section>{resource.title || resource || '...'}</section> */}
+      {/* {template(`<pre><code>${highlighted}</code></pre>`, 0, false)} */}
+      <Solid.Suspense>
+        {/* <Snippet code={code} language="ts" lineNumbers={false} /> */}
+        <div class="language-js" id="prism">
+          <pre class="language-js">
+            <code>const code = `const snippet = "cool markdown highlighting!";`</code>
+          </pre>
+        </div>
+
+        {/* <main>{template(bits()?.code, 0, false)}</main> */}
+        {/* <pre>{JSON.stringify(bits())}</pre> */}
+      </Solid.Suspense>
     </main>
   )
 }
-// export default function Bit() {
-//   const { id: snippetId } = useParams<Params>()
-//   // const [fullfiled, setFullfiled] = Solid.createSignal<SnippetWorkerResponse | null>(null)
-//   // const routeData = useRouteData<Promise<RouteDataFetchResponse<SnippetWorkerResponse>>>()
-
-//   // const awaitRouteData = async () => {
-//   //   const { data, error } = await routeData
-//   //   if (error) return
-//   //   // console.log(data)
-//   //   const { code, ...rest } = data
-//   //   const parseCode = parseStringHTML(code)
-//   //   setFullfiled(() => ({ code, ...rest }))
-//   //   console.log(data, error, fullfiled()?.code)
-//   // }
-
-//   // awaitRouteData()
-//   return (
-//     <main class="m-6 p-4 dark:text-white flex max-w-full justify-center">
-//       <section></section>
-//     </main>
-//   )
-// }

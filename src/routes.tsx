@@ -1,24 +1,20 @@
 import type { RouteDefinition } from 'solid-app-router'
-import { lazy } from 'solid-js'
-import { fetcher } from '@/utilities'
-import type { SnippetWorkerResponse, RouteDataFetchResponse } from './types'
-import { CLOUDFLARE_WORKERS_URL } from '@/constants'
+import * as Solid from 'solid-js'
+import articles from '@/data/articles/articles.json'
 
 export const ROUTES: RouteDefinition[] = [
-  {
-    path: '/',
-    component: lazy(() => import('@/pages/home')),
-  },
+  { path: '/', component: Solid.lazy(() => import('@/pages/home')) },
   {
     path: '/blog',
     children: [
       {
         path: '/',
-        component: lazy(() => import('@/pages/blog')),
+        component: Solid.lazy(() => import('@/pages/blog')),
       },
       {
         path: '/:id',
-        component: lazy(() => import('@/pages/blog/[id]')),
+        component: Solid.lazy(() => import('@/pages/blog/[id]')),
+        data: ({ params }) => articles.find(({ filename }) => filename === params.id),
       },
     ],
   },
@@ -27,21 +23,14 @@ export const ROUTES: RouteDefinition[] = [
     children: [
       {
         path: '/',
-        component: lazy(() => import('@/pages/bits')),
+        component: Solid.lazy(() => import('@/pages/bits')),
       },
       {
         path: '/:id',
-        component: lazy(() => import('@/pages/bits/[id]')),
-        // data: async () => {
-        //   const url = CLOUDFLARE_WORKERS_URL.snippets.proxy
-        //   const { data, error } = await fetcher<RouteDataFetchResponse<SnippetWorkerResponse>>(url)
-        //   return { data, error }
-        // },
+        component: Solid.lazy(() => import('@/pages/bits/[id]')),
       },
     ],
   },
-  {
-    path: '/projects',
-    component: lazy(() => import('@/pages/projects')),
-  },
+  { path: '/projects', component: Solid.lazy(() => import('@/pages/projects')) },
+  { path: '**', component: Solid.lazy(() => import('@/pages/404')) },
 ]

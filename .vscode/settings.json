@@ -11,7 +11,7 @@
     "plaintext": "html"
   },
   "files.associations": {
-    "*.css": "tailwindcss"
+    // "*.css": "tailwindcss"
   },
   "editor.quickSuggestions": {
     "strings": true

@@ -3,11 +3,12 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "strict": true,
     "pretty": true,
     "baseUrl": ".",
     "noEmit": true,
+    "checkJs": true,
     "allowJs": true,
     "outDir": "dist",
     "jsx": "preserve",
@@ -29,14 +30,23 @@
     "preserveWatchOutput": true,
     "jsxImportSource": "solid-js",
     "noUncheckedIndexedAccess": true,
+    "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node", "@types/mdx", "vite/client", "solid-jsx/types"],
+    "types": [
+      "node",
+      "@types/mdx",
+      "vite/client",
+      "solid-jsx/types",
+      "@cloudflare/workers-types"
+      // "typed-query-selector"
+    ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "functions/*": ["functions/*"]
     }
   },
   "references": [{ "path": "./tsconfig.node.json" }],
@@ -51,7 +61,7 @@
     "node_modules/@antfu/utils/index.d.ts",
     "./node_modules/@antfu/utils/index.d.ts"
   ],
-  "include": ["src", "test"],
+  "include": ["src", "test", "functions"],
   "ts-node": {
     "swc": true,
     "esm": true,

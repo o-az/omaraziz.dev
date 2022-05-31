@@ -1,6 +1,5 @@
 [
   {
-    "id": "1",
     "title": "Hello World!",
     "description": "This is my first blog post. I wrote it while developing the site. I hope you enjoy it. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac ornare orci, vitae condimentum urna. Donec et nisi in odio tempus pharetra sed id nibh. Cras lacinia, magna ut accumsan rutrum, ante nisi dignissim lorem, sed aliquet urna mi at lacus. Vivamus eu nunc justo.",
     "date": "2022-05-15",
@@ -8,19 +7,10 @@
     "tags": ["first", "ngmi"]
   },
   {
-    "id": "2",
-    "title": "Lorem Ipsum",
-    "description": "TODO: Add description for test1.mdx",
-    "date": "2022-05-18",
-    "filename": "test1",
-    "tags": []
-  },
-  {
-    "id": "3",
-    "title": "The Power of Bruce Lee!",
-    "description": "TODO: Add description for test2.mdx",
-    "date": "2022-05-18",
-    "filename": "test2",
-    "tags": []
+    "title": "Gist as CDN",
+    "description": "An attempt to use GitHub gists as a CDN for CSS and JS files. This post explores how that can be done and challenges you may encounter",
+    "date": "2022-05-26",
+    "filename": "gist-as-cdn",
+    "tags": ["gist", "cdn", "DOM", "HTML"]
   }
 ]

@@ -16,6 +16,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:mdx/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
   ],
@@ -26,6 +27,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
+    'mdx/code-blocks': true,
   },
   rules: {
     'prefer-const': ['off'],

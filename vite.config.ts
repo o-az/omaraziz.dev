@@ -1,9 +1,8 @@
 /// <reference types="vite/client" />
 /// <reference types="vitest" />
 
-import { resolve } from 'path'
-import type { UserConfig, ProxyOptions } from 'vite'
 import { defineConfig } from 'vite'
+import type { UserConfig, ProxyOptions } from 'vite'
 import solid from 'vite-plugin-solid'
 import WindiCSS from 'vite-plugin-windicss'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -14,15 +13,21 @@ const { default: mdx } = await import('@mdx-js/rollup')
 import type { Options as MdxOptions } from '@mdx-js/rollup'
 const { default: remarkGfm } = await import('remark-gfm')
 import type { Options as RemarkGfmOptions } from 'remark-gfm'
+const { default: remarkMdx } = await import('remark-mdx')
+const { default: remarkMath } = await import('remark-math')
+const { default: remarkDirective } = await import('remark-directive')
+const { default: rehypeSanitize } = await import('rehype-sanitize')
+const { default: rehypeMeta } = await import('rehype-meta')
+const { default: rehypeCodeTitles } = await import('rehype-code-titles')
+const { default: rehypeInferTitleMeta } = await import('rehype-infer-title-meta')
+const { default: rehypeInferDescriptionMeta } = await import('rehype-infer-description-meta')
+const { default: rehypeInferReadingTimeMeta } = await import('rehype-infer-reading-time-meta')
+const { default: rehypeSlugs } = await import('rehype-slug')
+const { default: rehypeMathjax } = await import('rehype-mathjax')
 const { remarkMdxFrontmatter } = await import('remark-mdx-frontmatter')
 const { default: remarkFrontmatter } = await import('remark-frontmatter')
-
-const { default: rehypeSlugs } = await import('rehype-slug')
-// import 'highlight.js'
-// const { default: rehypeHighlight } = await import('rehype-highlight')
-const { default: rehypeCodeTitles } = await import('rehype-code-titles')
-const { default: rehypeAutolinkHeadings } = await import('rehype-autolink-headings')
 const { default: rehypePrettyCode } = await import('rehype-pretty-code')
+const { default: rehypeAutolinkHeadings } = await import('rehype-autolink-headings')
 import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code'
 const { default: rehypeTheme } = await import('./public/assets/mdx-theme/moonlight-ii.json')
 
@@ -34,10 +39,6 @@ const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
   tokensMap: {
     fn: 'entity.name.function',
   },
-  // getHighlighter: async options => {
-  //   const { getHighlighter, BUNDLED_LANGUAGES } = await import('shiki')
-  //   return getHighlighter({ ...options, theme: 'one-dark-pro', langs: [...BUNDLED_LANGUAGES] })
-  // },
   onVisitLine: node => {
     if (node.children.length === 0) node.children = [{ type: 'text', value: ' ' }]
   },
@@ -52,25 +53,37 @@ const remarkGfmOptions: RemarkGfmOptions = {
 }
 
 const mdxConfig: MdxOptions = {
-  jsxImportSource: 'solid-jsx',
   useDynamicImport: true,
+  jsxImportSource: 'solid-jsx',
+  providerImportSource: 'solid-mdx',
+  development: process.env.NODE_ENV === 'development',
+  remarkPlugins: [
+    [remarkGfm, remarkGfmOptions],
+    remarkMdx,
+    [remarkFrontmatter, 'yaml'],
+    remarkMdxFrontmatter,
+    remarkMath,
+    remarkDirective,
+  ],
   rehypePlugins: [
-    // rehypeHighlight,
-    [rehypePrettyCode, rehypePrettyCodeOptions],
+    // rehype,
+    rehypeMeta,
     rehypeSlugs,
-    // [rehypeShiki, { theme: 'nord', useBackground: true }],
+    rehypeMathjax,
+    // rehypeSanitize,
+    rehypeCodeTitles,
+    rehypeInferTitleMeta,
+    rehypeInferDescriptionMeta,
+    rehypeInferReadingTimeMeta,
+    [rehypePrettyCode, rehypePrettyCodeOptions],
     [
       rehypeAutolinkHeadings,
       {
-        properties: {
-          className: ['anchor'],
-        },
+        // behavior: 'wrap',
+        properties: { className: ['heading'] },
       },
     ],
-    // rehypeCodeTitles,
   ],
-  remarkPlugins: [[remarkGfm, remarkGfmOptions], remarkFrontmatter, remarkMdxFrontmatter],
-  development: process.env.NODE_ENV === 'development',
 }
 
 /** Overcome CORS pain on localhost */
@@ -86,21 +99,37 @@ const viteProxy: Record<string, string | ProxyOptions> = {
 /** Vite config */
 const config = async (): Promise<UserConfig> => {
   return {
-    plugins: [solid(), WindiCSS(), tsconfigPaths(), mdx(mdxConfig)],
+    plugins: [
+      WindiCSS(),
+      tsconfigPaths(),
+      { ...mdx(mdxConfig), enforce: 'pre' },
+      solid({ extensions: ['.mdx', '.md'] }),
+    ],
     server: {
       host: '0.0.0.0',
-      port: 3000,
+      port: Number(process.env.PORT || 3000),
       proxy: process.env.NODE_ENV ? viteProxy : undefined,
+      // headers: {},
     },
+    preview: { port: Number(process.env.PORT || 3000) + 1 },
     resolve: {
       alias: {
         '@/': './src',
+        'functions/': './functions',
       },
     },
     optimizeDeps: {
       include: ['solid-js/h/jsx-runtime'],
     },
-    build: { target: 'esnext', polyfillDynamicImport: false, rollupOptions: {} },
+    build: {
+      target: 'esnext',
+      watch: {},
+      polyfillDynamicImport: false,
+      rollupOptions: {
+        output: {},
+      },
+    },
+    clearScreen: false,
     /** vitest */
     test: { globals: true },
   }

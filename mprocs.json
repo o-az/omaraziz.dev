@@ -1,0 +1,10 @@
+{
+  "procs": {
+    "vite": {
+      "shell": "yarn dev"
+    },
+    "wrangler": {
+      "shell": "wrangler pages dev ."
+    }
+  }
+}

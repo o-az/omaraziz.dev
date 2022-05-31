@@ -13,9 +13,7 @@ const toggleTheme = () => {
     // Update code syntax highlighting theme
     document.querySelectorAll('[data-theme]').forEach(element => {
       const currentDataTheme = element.getAttribute('data-theme')
-      currentDataTheme !== nextTheme
-        ? ((element as HTMLElement).style.display = 'none')
-        : ((element as HTMLElement).style.display = 'block')
+      ;(element as HTMLElement).style.display = currentDataTheme !== nextTheme ? 'none' : 'block'
     })
     return nextTheme
   })
