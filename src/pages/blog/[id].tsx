@@ -26,7 +26,7 @@ export default function BlogPost() {
   const [blogViews, { mutate, refetch }] = Solid.createResource(() => filename, fetchBlogViews)
 
   Solid.onMount(() => {
-    const element = document.querySelector('main')
+    const element = document.querySelector('main') as unknown as HTMLElement
     const range = document.createRange()
     const fragment = range.createContextualFragment(
       `<script
@@ -37,7 +37,6 @@ export default function BlogPost() {
       data-category-id="DIC_kwDOHUnWO84CPZZM"
       data-mapping="title"
       data-reactions-enabled="1"
-      data-emit-metadata="1"
       data-input-position="top"
       data-theme="dark"
       data-lang="en"
@@ -46,9 +45,7 @@ export default function BlogPost() {
       async
     ></script>`
     )
-    if (import.meta.env.MODE === 'production') {
-      element?.appendChild(fragment)
-    }
+    element?.appendChild(fragment)
   })
 
   const metaTags = [
@@ -81,10 +78,10 @@ export default function BlogPost() {
   return (
     <Solid.ErrorBoundary fallback={<Navigate href="/404" />}>
       <Title>{article.title}</Title>
-      {metaTags.map(({ name, content }) => (
+      {/* {metaTags.map(({ name, content }) => (
         <Meta name={name} content={content} />
-      ))}
-      <main class="flex flex-col mx-auto px-4 justify-center sm:(w-full max-w-3xl px-8) dark:text-white merriWeather">
+      ))} */}
+      <main class="flex flex-col mx-auto px-4 justify-center sm:(w-full max-w-3xl px-8) dark:text-white mb-8">
         <Solid.Suspense fallback={<span></span>}>
           <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white)">
             {article?.title}
@@ -113,6 +110,7 @@ export default function BlogPost() {
             <Markdown />
           </article>
         </Solid.Suspense>
+        <div class="giscus"></div>
       </main>
     </Solid.ErrorBoundary>
   )
