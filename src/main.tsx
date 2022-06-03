@@ -10,7 +10,7 @@ import 'virtual:windi-utilities.css'
 import 'virtual:windi-components.css'
 import 'windi.css'
 
-import App from '@/app'
+import App from '@/App'
 
 console.log(process.env.NODE_ENV)
 
