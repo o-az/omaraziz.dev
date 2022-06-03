@@ -46,7 +46,6 @@
       "vite/client",
       "solid-jsx/types",
       "@cloudflare/workers-types"
-      // "typed-query-selector"
     ],
     "paths": {
       "@/*": ["src/*"],
@@ -56,14 +55,7 @@
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": [
     "node_modules",
-    ".scratch",
-    "**/node_modules/**",
-    "./node_modules",
-    "./node_modules/*",
-    "./node_modules/vitest/dist/index.d.ts",
-    "node_modules/vitest/dist/index.d.ts",
-    "node_modules/@antfu/utils/index.d.ts",
-    "./node_modules/@antfu/utils/index.d.ts"
+    ".scratch"
   ],
   "include": ["src", "test", "functions"],
   "ts-node": {

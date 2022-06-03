@@ -1,6 +1,6 @@
 export const onRequestGet: PagesFunction<{ BLOG_VIEWS: KVNamespace }> = async ({ env }) => {
-  const { BLOG_VIEWS } = env
   try {
+    const { BLOG_VIEWS } = env
     const kvList = await BLOG_VIEWS.list()
     const promise = kvList.keys.map(async ({ name }) => ({ slug: name, views: await BLOG_VIEWS.get(name) }))
     const data = await Promise.all(promise)

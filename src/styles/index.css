@@ -15,10 +15,9 @@ html,
 #root {
   min-width: 360px;
   scroll-behavior: smooth;
-  @apply w-full h-full m-0 antialiased;
+  @apply w-full m-0 antialiased;
 }
 
-/* https://seek-oss.github.io/capsize/ */
 .capsize::before {
   content: '';
   margin-bottom: -0.098em;

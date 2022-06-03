@@ -6,9 +6,9 @@ export const onRequestGet: PagesFunction<
   },
   'slug'
 > = async ({ request, params, env, data, waitUntil, functionPath }) => {
-  const { slug } = params as { slug: string }
-  const { BLOG_VIEWS } = env
   try {
+    const { slug } = params as { slug: string }
+    const { BLOG_VIEWS } = env
     const current = await BLOG_VIEWS.get(slug)
     const updated = `${Number(current) + 1}`
     await BLOG_VIEWS.put(slug, updated)

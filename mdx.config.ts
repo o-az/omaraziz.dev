@@ -42,7 +42,7 @@ const remarkGfmOptions: RemarkGfmOptions = {
   stringLength: (str: string) => str.length,
 }
 
-const remarkToCOptions: RemarkToCOptions = { tight: true, maxDepth: 2, ordered: true }
+const remarkToCOptions: RemarkToCOptions = { tight: true, maxDepth: 2, ordered: false }
 
 const rehypeMetaOptions: RehypeMetaOptions = {
   og: true,

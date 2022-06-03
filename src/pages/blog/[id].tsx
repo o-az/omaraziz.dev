@@ -1,5 +1,5 @@
 import * as Solid from 'solid-js'
-import { useParams, useRouteData } from 'solid-app-router'
+import { Navigate, useParams, useRouteData } from 'solid-app-router'
 import { Meta, Title } from 'solid-meta'
 import 'typed-query-selector'
 import type { Article } from '@/types'
@@ -79,26 +79,27 @@ export default function BlogPost() {
   ]
 
   return (
-    <Solid.ErrorBoundary fallback={<span>...</span>}>
+    <Solid.ErrorBoundary fallback={<Navigate href="/404" />}>
       <Title>{article.title}</Title>
       {metaTags.map(({ name, content }) => (
         <Meta name={name} content={content} />
       ))}
       <main class="flex flex-col mx-auto px-4 justify-center sm:(w-full max-w-3xl px-8) dark:text-white merriWeather">
         <Solid.Suspense fallback={<span></span>}>
-          <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-5xl) dark:(text-white)">
-            {article.title}
+          <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white)">
+            {article?.title}
           </h1>
           <div class="flex flex-col my-4 text-sm mb-4 w-full text-gray-600 items-start justify-between subpixel-antialiased md:(items-center flex-row) dark:(text-gray-400) ">
             <p class="text-center ml-2 w-full sm:(text-left)">Omar Aziz / {dateStringToHuman(article.date)}</p>
 
             <p class="mt-2 text-center w-full sm:(text-right) md:(mt-0)">
-              {article.readingTime} • <span>{blogViews()?.data.views} views</span>
+              {article.readingTime}
+              {blogViews.error || !blogViews()?.data.views ? null : <span> • {blogViews()?.data.views} views</span>}
             </p>
           </div>
           <ul>
             {article.tags.map(tag => (
-              <li class="rounded-sm font-semibold bg-gray-200 text-sm mr-2 py-1 px-2 text-gray-700 inline-block dark:(text-gray-400 bg-gray-800) hover:(text-white font-bold bg-gray-400 cursor-pointer) ">
+              <li class="rounded-sm font-semibold bg-gray-200 text-sm mr-2 py-1 px-2 text-gray-700 inline-block dark:(text-gray-400 bg-gray-800) hover:(text-white font-bold bg-gray-400 cursor-pointer)">
                 <a class="focus:outline-none" aria-label="" href="*">
                   {tag}
                 </a>
