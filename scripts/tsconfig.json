@@ -7,8 +7,11 @@
     "strict": true,
     "pretty": true,
     "baseUrl": ".",
+    "noEmit": true,
+    "checkJs": true,
     "allowJs": true,
     "declaration": true,
+    "incremental": true,
     "skipLibCheck": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
@@ -20,17 +23,21 @@
     "strictNullChecks": true,
     "noImplicitReturns": true,
     "resolveJsonModule": true,
+    "allowUnusedLabels": true,
+    "noImplicitOverride": true,
     "preserveConstEnums": true,
     "moduleResolution": "Node",
     "preserveWatchOutput": true,
+    "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
+    "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["**/node_modules/@types"],
     "forceConsistentCasingInFileNames": true,
-    "types": ["@types/node"],
+    "noPropertyAccessFromIndexSignature": true,
+    "types": ["node", "@types/node"],
     "paths": {
       "~scripts/*": ["./*"]
     }
@@ -43,7 +50,7 @@
     "transpileOnly": true,
     "require": ["tsconfig-paths/register"],
     "paths": {
-      "@/*": ["src/*"]
+      "~scripts/*": ["./*"]
     }
   }
 }

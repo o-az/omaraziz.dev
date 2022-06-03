@@ -5,4 +5,5 @@ export const environment = {
   DEV: import.meta.env.DEV,
   PROD: import.meta.env.PROD,
   SSR: import.meta.env.SSR,
+  NODE_ENV: process.env.NODE_ENV,
 }

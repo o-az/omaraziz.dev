@@ -4,7 +4,7 @@
       "shell": "yarn dev"
     },
     "wrangler": {
-      "shell": "wrangler pages dev ."
+      "shell": "wrangler pages dev ./functions --binding --kv BLOG_VIEWS"
     }
   }
 }

@@ -4,13 +4,15 @@
     "description": "This is my first blog post. I wrote it while developing the site. I hope you enjoy it. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac ornare orci, vitae condimentum urna. Donec et nisi in odio tempus pharetra sed id nibh. Cras lacinia, magna ut accumsan rutrum, ante nisi dignissim lorem, sed aliquet urna mi at lacus. Vivamus eu nunc justo.",
     "date": "2022-05-15",
     "filename": "hello-world",
-    "tags": ["first", "ngmi"]
+    "tags": ["first", "ngmi"],
+    "readingTime": "1 min read"
   },
   {
     "title": "Gist as CDN",
     "description": "An attempt to use GitHub gists as a CDN for CSS and JS files. This post explores how that can be done and challenges you may encounter",
     "date": "2022-05-26",
     "filename": "gist-as-cdn",
-    "tags": ["gist", "cdn", "DOM", "HTML"]
+    "tags": ["Gist", "CDN", "DOM", "HTML"],
+    "readingTime": "4 min read"
   }
 ]

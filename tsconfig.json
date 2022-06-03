@@ -25,10 +25,13 @@
     "strictNullChecks": true,
     "noImplicitReturns": true,
     "resolveJsonModule": true,
+    "allowUnusedLabels": true,
+    "noImplicitOverride": true,
     "preserveConstEnums": true,
     "moduleResolution": "Node",
     "preserveWatchOutput": true,
     "jsxImportSource": "solid-js",
+    "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
     "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
@@ -36,6 +39,7 @@
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "noPropertyAccessFromIndexSignature": true,
     "types": [
       "node",
       "@types/mdx",
@@ -46,7 +50,7 @@
     ],
     "paths": {
       "@/*": ["src/*"],
-      "functions/*": ["functions/*"]
+      "~functions/*": ["functions/*"]
     }
   },
   "references": [{ "path": "./tsconfig.node.json" }],

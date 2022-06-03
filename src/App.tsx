@@ -1,12 +1,11 @@
 import { useRoutes } from 'solid-app-router'
-import type { Component } from 'solid-js'
 import { MetaProvider } from 'solid-meta'
 
 import { Header, MetaTags } from '@/components'
 import { ROUTES } from '@/routes'
 import { META_TAGS } from '@/data'
 
-const App: Component = () => {
+export default function App() {
   const Route = useRoutes(ROUTES)
 
   return (
@@ -17,5 +16,3 @@ const App: Component = () => {
     </MetaProvider>
   )
 }
-
-export default App

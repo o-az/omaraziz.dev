@@ -16,4 +16,5 @@ export interface Article {
   description: string
   date: string
   tags: string[]
+  readingTime: string
 }

@@ -2,8 +2,8 @@ import * as Solid from 'solid-js'
 import { template } from 'solid-js/web'
 import { newLinkTag, fetchHeaders, fetchContentType } from '@/utilities'
 // import '@/styles/markdown.css'
-import Prism from 'prismjs'
-import type { Grammar } from 'prismjs'
+// import Prism from 'prismjs'
+// import type { Grammar } from 'prismjs'
 
 // import 'prismjs/components/prism-haml'
 // import 'prismjs/components/prism-markdown'
@@ -90,8 +90,8 @@ export function Snippet(props: {
   const [style, setStyle] = Solid.createSignal('')
   const [styleResourse] = Solid.createResource(() => code, fetchStyle)
 
-  const lang = Prism.languages[language] as unknown as Grammar
-  const highlighted = Prism.highlight(code, lang, language)
+  // const lang = Prism.languages[language] as unknown as Grammar
+  // const highlighted = Prism.highlight(code, lang, language)
 
   // addCss('https://gitcdn.link/cdn/PrismJS/prism-themes/master/themes/prism-synthwave84.css')
 
@@ -130,7 +130,7 @@ export function Snippet(props: {
   const numberLines = lineNumbers ? 'line-numbers' : ''
   return (
     <div class={`${numberLines} language-${language}`} id="prism">
-      <pre class={`${numberLines} language-${language}`}>{template(`<code>${highlighted}</code>`, 0, false)}</pre>
+      {/* <pre class={`${numberLines} language-${language}`}>{template(`<code>${highlighted}</code>`, 0, false)}</pre> */}
     </div>
   )
 }

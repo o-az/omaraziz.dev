@@ -6,21 +6,47 @@
     17px 33.9px 42.7px -2.1px var(--shadow-color), 25px 50px 62.9px -2.5px var(--shadow-color);
 }
 
-html {
-  @apply antialiased;
+::selection {
+  background-color: #ffb0ee86;
+  color: #f7f7f7;
 }
 
+html,
 #root {
-  @apply w-full h-full m-0 overflow-y-auto antialiased;
+  min-width: 360px;
+  scroll-behavior: smooth;
+  @apply w-full h-full m-0 antialiased;
+}
+
+/* https://seek-oss.github.io/capsize/ */
+.capsize::before {
+  content: '';
+  margin-bottom: -0.098em;
+  display: table;
+}
+
+.capsize::after {
+  content: '';
+  margin-top: -0.219em;
+  display: table;
+}
+
+.skip-nav {
+  @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
+}
+
+#skip {
+  scroll-margin-top: 1.125rem;
 }
 
 body {
-  @apply dark:bg-[rgb(19_24_27)] w-full h-full opacity-[0.9] m-0 selection:bg-red-300 selection:text-white;
+  @apply dark:bg-[rgb(01,01,01,01)] w-full h-full m-0;
 }
 
 code,
 pre {
-  font-family: JetBrainsMono !important;
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  /* font-family: JetBrainsMono !important; */
 }
 
 *::-webkit-scrollbar {
@@ -28,14 +54,14 @@ pre {
 }
 
 *::-webkit-scrollbar-track {
-  /* -ms-overflow-style: none; */
-  /* overflow: -moz-scrollbars-none; */
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
   @apply bg-zinc-800 h-[0.3rem];
 }
 
 *::-webkit-scrollbar-thumb {
-  /* -ms-overflow-style: none; */
-  /* overflow: -moz-scrollbars-none; */
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
   @apply bg-gray-600 border-20 border-red-500 border-2 rounded-xl h-2;
 }
 

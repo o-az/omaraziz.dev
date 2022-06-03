@@ -3,6 +3,7 @@ import globby from 'globby'
 import prettier from 'prettier'
 
 async function generateSiteMap() {
+  console.log('Generating sitemap...')
   try {
     const prettierConfig = await prettier.resolveConfig('./.prettierrc.cjs')
     const pages = await globby(['**/src/routes/**/*.tsx', '!**/node_modules/**'])

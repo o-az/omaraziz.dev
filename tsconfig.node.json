@@ -11,20 +11,11 @@
   },
   "include": [
     "vite.config.ts",
-    "./vite.config.ts",
-    "vite.config.*",
-    "/vite.config.ts",
+    "mdx.config.ts",
     "public/assets/mdx-theme/*.json"
   ],
   "exclude": [
     "node_modules",
-    ".scratch",
-    "**/node_modules/**",
-    "./node_modules",
-    "./node_modules/*",
-    "./node_modules/vitest/dist/index.d.ts",
-    "node_modules/vitest/dist/index.d.ts",
-    "node_modules/@antfu/utils/index.d.ts",
-    "./node_modules/@antfu/utils/index.d.ts"
+    ".scratch"
   ]
 }

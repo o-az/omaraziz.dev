@@ -1,0 +1,4 @@
+{
+  "name": "scripts",
+  "description": "This package.json is necessary in order to be able to run ts-node on ESM files while having type: 'module' in the base package.json"
+}

@@ -1,5 +1,6 @@
 export * from './footer'
 export * from './header'
+export * from './image'
 export * from './toggle'
 export * from './snippet'
 export * from './meta-tags'

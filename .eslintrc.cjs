@@ -28,6 +28,7 @@ module.exports = {
       },
     },
     'mdx/code-blocks': true,
+    'mdx/language-mapper': {},
   },
   rules: {
     'prefer-const': ['off'],

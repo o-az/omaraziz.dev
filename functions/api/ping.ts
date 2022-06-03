@@ -1,9 +1,6 @@
-export const onRequestGet: PagesFunction<{
-  PING: KVNamespace
-}> = async ({ request, env, params, waitUntil, next, data }) => {
+export const onRequestGet: PagesFunction = async context => {
   try {
-    // console.log({ request, env, params, waitUntil, next, data })
-    return new Response(JSON.stringify({ data: 'Hello world!' }), {
+    return new Response(JSON.stringify({ ping: 'pong' }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })

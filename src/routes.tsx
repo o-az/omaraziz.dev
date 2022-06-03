@@ -1,6 +1,7 @@
 import type { RouteDefinition } from 'solid-app-router'
 import * as Solid from 'solid-js'
 import articles from '@/data/articles/articles.json'
+import { fetchBlogViews } from './api/views'
 
 export const ROUTES: RouteDefinition[] = [
   { path: '/', component: Solid.lazy(() => import('@/pages/home')) },
@@ -14,7 +15,7 @@ export const ROUTES: RouteDefinition[] = [
       {
         path: '/:id',
         component: Solid.lazy(() => import('@/pages/blog/[id]')),
-        data: ({ params }) => articles.find(({ filename }) => filename === params.id),
+        data: ({ params }) => articles.find(({ filename }) => filename === params['id']),
       },
     ],
   },

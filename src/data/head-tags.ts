@@ -3,7 +3,7 @@ import type { JSX } from 'solid-js'
 export const META_TAGS: Array<Pick<JSX.MetaHTMLAttributes<HTMLMetaElement>, 'name' | 'content'>> = [
   {
     name: 'author',
-    content: 'Omar',
+    content: 'Omar Aziz',
   },
   {
     name: 'description',
@@ -51,8 +51,9 @@ export const META_TAGS: Array<Pick<JSX.MetaHTMLAttributes<HTMLMetaElement>, 'nam
   },
   {
     name: 'twitter:title',
-    content: 'Omar Aziz – Software engineer, OSS contributor',
+    content: 'Omar Aziz - Software engineer, OSS contributor',
   },
+  // TODO
   {
     name: 'twitter:description',
     content: 'gm',
