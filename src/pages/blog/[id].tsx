@@ -78,9 +78,9 @@ export default function BlogPost() {
   return (
     <Solid.ErrorBoundary fallback={<Navigate href="/404" />}>
       <Title>{article.title}</Title>
-      {/* {metaTags.map(({ name, content }) => (
+      {metaTags.map(({ name, content }) => (
         <Meta name={name} content={content} />
-      ))} */}
+      ))}
       <main class="flex flex-col mx-auto px-4 justify-center sm:(w-full max-w-3xl px-8) dark:text-white mb-8">
         <Solid.Suspense fallback={<span></span>}>
           <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white)">
