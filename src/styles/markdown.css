@@ -54,7 +54,8 @@ span {
   /* @apply border dark:border-zinc-800 border-zinc-300 hover:bg-zinc-200 bg-zinc-100 dark:bg-red-900 hover:dark:bg-transparent; */
 }
 
-span.line, span.line > span {
+span.line,
+span.line > span {
   @apply select-all selection:(bg-pink-200 text-gray-700) break-all overflow-auto max-w-full whitespace-nowrap;
 }
 

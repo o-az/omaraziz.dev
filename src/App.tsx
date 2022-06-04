@@ -11,7 +11,7 @@ export default function App() {
   return (
     <Solid.ErrorBoundary fallback={<Navigate href="/404" />}>
       <MetaProvider>
-        <MetaTags title="✨" metas={META_TAGS} />
+        {/* <MetaTags title="✨" metas={META_TAGS} /> */}
         <Header />
         <Route />
       </MetaProvider>
