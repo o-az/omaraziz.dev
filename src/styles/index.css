@@ -15,10 +15,10 @@ html,
 #root {
   min-width: 360px;
   scroll-behavior: smooth;
-  @apply w-full m-0 antialiased;
+  @apply w-full m-0;
 }
 
-.capsize::before {
+/* .capsize::before {
   content: '';
   margin-bottom: -0.098em;
   display: table;
@@ -28,15 +28,15 @@ html,
   content: '';
   margin-top: -0.219em;
   display: table;
-}
+} */
 
 .skip-nav {
   @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
 }
-
+/*
 #skip {
   scroll-margin-top: 1.125rem;
-}
+} */
 
 body {
   @apply dark:bg-[rgb(01,01,01,01)] w-full h-full m-0;

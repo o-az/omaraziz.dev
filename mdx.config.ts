@@ -42,7 +42,14 @@ const remarkGfmOptions: RemarkGfmOptions = {
   stringLength: (str: string) => str.length,
 }
 
-const remarkToCOptions: RemarkToCOptions = { tight: true, maxDepth: 2, ordered: false }
+const remarkToCOptions: RemarkToCOptions = {
+  tight: true,
+  ordered: false,
+  prefix: undefined,
+  skip: undefined,
+  parents: undefined,
+  maxDepth: 2,
+}
 
 const rehypeMetaOptions: RehypeMetaOptions = {
   og: true,
@@ -60,7 +67,10 @@ const rehypeInferDescriptionMetaOptions: RehypeInferDescriptionMetaOptions = {
   // comment: '<!-- description -->',
 }
 
-const rehypeAutolinkHeadingsOptions: RehypeAutolinkHeadingsOptions = { properties: { className: ['anchor'] } }
+const rehypeAutolinkHeadingsOptions: RehypeAutolinkHeadingsOptions = {
+  // behavior: '',
+  properties: { className: ['anchor'] },
+}
 
 export const mdxConfig: MdxOptions = {
   useDynamicImport: true,

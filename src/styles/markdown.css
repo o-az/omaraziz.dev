@@ -15,8 +15,13 @@ html.light {
   }
 }
 
+p,
+span {
+  @apply whitespace-pre-wrap;
+}
+
 *[class*='prose'] pre {
-  @apply break-all overflow-x-auto bg-transparent;
+  @apply break-all overflow-x-auto bg-transparent max-w-full;
 }
 
 *[class*='prose'] div[data-rehype-pretty-code-fragment] {
@@ -29,7 +34,7 @@ html.light {
 
 /** Code Title */
 [data-rehype-pretty-code-title] {
-  @apply select-none text-sm py-1 px-2 flex justify-between;
+  @apply select-none text-sm px-2 flex justify-between;
   @apply border-b rounded-none text-gray-500 border-zinc-300 dark:(bg-transparent text-gray-400 border-zinc-900);
 }
 
@@ -49,8 +54,8 @@ html.light {
   /* @apply border dark:border-zinc-800 border-zinc-300 hover:bg-zinc-200 bg-zinc-100 dark:bg-red-900 hover:dark:bg-transparent; */
 }
 
-span.line {
-  @apply select-all selection:(bg-pink-200 text-gray-700) break-all overflow-auto;
+span.line, span.line > span {
+  @apply select-all selection:(bg-pink-200 text-gray-700) break-all overflow-auto max-w-full whitespace-nowrap;
 }
 
 /** In line code */
@@ -98,11 +103,7 @@ p > code {
 
 .prose .anchor {
   @apply absolute invisible no-underline w-full;
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 100%;
-  max-width: 700px;
-  cursor: pointer;
+  @apply -ml-6 pr-6 w-full max-w-[700px] cursor-pointer;
 }
 
 .anchor:hover {
@@ -113,7 +114,7 @@ p > code {
   @apply transition-all w-full;
 }
 
-.prose .anchor:after {
+.anchor::before {
   @apply text-gray-300 dark:text-gray-600;
   content: '#';
 }

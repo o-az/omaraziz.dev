@@ -24,7 +24,7 @@ export function Toggle() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      class="relative flex h-9 w-9 items-center justify-center rounded-lg bg-transparent ring-gray-500 transition-all hover:ring-1 dark:bg-transparent rounded-full  mt-2"
+      class="relative flex h-7 w-8 items-center justify-center rounded-full bg-transparent ring-gray-500 transition-all hover:ring-1 dark:bg-transparent rounded-full mt-[1px]"
       onClick={toggleTheme}
     >
       <svg

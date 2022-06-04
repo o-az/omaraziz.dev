@@ -8,7 +8,6 @@ import lineClampPlugin from 'windicss/plugin/line-clamp'
 import typographyPlugin from 'windicss/plugin/typography'
 import scrollSnapPlugin from 'windicss/plugin/scroll-snap'
 import aspectRatioPlugin from 'windicss/plugin/aspect-ratio'
-
 export default defineConfig({
   attributify: true,
   extract: {
@@ -63,5 +62,8 @@ export default defineConfig({
       },
     },
   },
-  plugins: [formsPlugin, filtersPlugin, lineClampPlugin, scrollSnapPlugin, aspectRatioPlugin, typographyPlugin],
+  plugins: [
+    typographyPlugin,
+    // formsPlugin, filtersPlugin, lineClampPlugin, scrollSnapPlugin, aspectRatioPlugin,
+  ],
 })

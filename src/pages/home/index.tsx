@@ -23,12 +23,14 @@ export default function Home() {
     <main class="mt-28 relative grid grid-flow-col items-center text-center text-white">
       <section class="grid items-center">
         <p
-          class="mb-1 font-bold text-black dark:text-[#f7f7f7] tracking-normal inter-bold font-extrabold text-center"
-          style={{
-            // clamp(A, B, C)
-            // element is B% of parent, size: A < element size < C
-            'font-size': 'clamp(8em, 80%, 200px)',
-          }}
+          class="mb-1 text-black dark:(text-[#f7f7f7]) tracking-normal inter-bold font-extrabold text-center text-6xl mb-4 md:(text-10xl)"
+          style={
+            {
+              // clamp(A, B, C)
+              // element is B% of parent, size: A < element size < C
+              // 'font-size': 'clamp(8em, 80%, 200px)',
+            }
+          }
         >
           Omar Aziz
         </p>
@@ -41,7 +43,6 @@ export default function Home() {
             </a>
           ))}
         </ul>
-        <p class="text-2xl p-20 leading-10"></p>
       </section>
     </main>
   )

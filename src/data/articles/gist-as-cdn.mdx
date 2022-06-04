@@ -2,11 +2,12 @@
 title: Gist as CDN
 path: /gist-as-cdn
 date: 2022-05-15
-layout: article
-type: article
+background: #fafafa
+backgroundImage: /images/gist-as-cdn.jpg
 ---
 
 import { Image } from '@/components/image'
+import resultImage from '/images/syntax-highlight-gist-cdn.png'
 
 ### Table of contents
 
@@ -99,7 +100,7 @@ async function importGistCSS(url) {
 
 To test this, I put it all together in a `<script>` tag. You probably want better error handling and code org. in a real world scenario.
 
-```html showLineNumbers title="index.html"
+```html title="index.html"
 <script type="module">
   const gistURL =
     'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/6070da8ac2821ffc94de51f1a3bc1b30d862643c/stylesheet.css'
@@ -152,6 +153,8 @@ To test this, I put it all together in a `<script>` tag. You probably want bette
 ```
 
 Nice, that worked:
+
+<Image src={resultImage} caption="Tested on the browser, CSS loaded from a Github gist. Success" />
 
 ## Conclusion
 
