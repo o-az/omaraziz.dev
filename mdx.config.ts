@@ -27,9 +27,9 @@ const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
 }
 
 const remarkGfmOptions: RemarkGfmOptions = {
-  // singleTilde: true,
-  // tablePipeAlign: true,
-  // stringLength: (str: string) => str.length,
+  singleTilde: true,
+  tablePipeAlign: true,
+  stringLength: (str: string) => str.length,
 }
 
 const remarkToCOptions: RemarkToCOptions = {
@@ -43,7 +43,7 @@ const remarkToCOptions: RemarkToCOptions = {
 
 const rehypeAutolinkHeadingsOptions: RehypeAutolinkHeadingsOptions = {
   behavior: 'wrap',
-  // properties: { className: ['anchor'] },
+  properties: { className: ['anchor'] },
 }
 const remarkFrontmatterOptions: RemarkFrontmatterOptions = ['yaml', 'toml']
 

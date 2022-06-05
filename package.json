@@ -30,8 +30,7 @@
   "dependencies": {
     "solid-app-router": "^0.3.2",
     "solid-js": "^1.4.1",
-    "solid-meta": "^0.27.5",
-    "solid-use": "^0.3.3"
+    "solid-meta": "^0.27.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",

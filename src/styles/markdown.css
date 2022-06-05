@@ -1,12 +1,12 @@
 :root {
-  --article-background: hsla(234, 38.5%, 5.1%, 1);
+  --article-background-dark: rgb(29, 225, 49);
+  --article-background-light: hsla(244, 49.5%, 97%, 11);
 }
 
 * {
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
 }
-
 
 html.dark {
   [data-theme='light'] {
@@ -26,17 +26,30 @@ html.light {
   @apply max-w-full;
 }
 
+[data-line-numbers] {
+  counter-reset: line;
+}
+
+[data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  text-align: justify;
+  @apply text-gray-300 text-right inline-block hover:text-gray-100 tabular-nums;
+  @apply mr-[8px] sm:mr-[12px];
+}
+
 article {
-  background: var(--article-background);
-  border-color: rgba(10, 12, 25, 0.677);
-  /* box-shadow: 10px 10px 10px 10px rgba(255, 255, 255, 0.5); */
-  /* box-shadow: 0 0 0 0.7em #f4aab9, 0 0 0 1.5em rgba(239, 26, 26, 0.5); */
-  @apply w-full max-w-full overflow-hidden rounded-md border-3;
+  @apply w-full max-w-full overflow-hidden px-2 sm:p-6;
 }
 
 p,
 span {
-  @apply whitespace-pre-wrap text-gray-100;
+  @apply whitespace-pre-wrap text-gray-800 dark:text-gray-100;
+}
+
+svg,
+g {
+  color: red @apply w-full h-full;
 }
 
 *[class*='prose'] pre {
@@ -44,6 +57,7 @@ span {
 }
 
 *[class*='prose'] div[data-rehype-pretty-code-fragment] {
+  font-family: JetBrainsMono;
   @apply w-full min-w-full max-w-full leading-[1.55rem] dark:(bg-[hsl(0,0%,25%/0.2)] border-zinc-900) hover:(cursor-text border) border border-gray-200 bg-gray-200 text-sm sm:text-base font-extralight overflow-hidden rounded-lg sm:rounded-md p-1 my-3;
 }
 
@@ -80,7 +94,7 @@ span.line > span {
 
 /** In line code */
 p > code {
-  @apply rounded-lg hover:(bg-gray-200) text-gray-800 dark:(bg-gray-800 text-lightBlue-300) bg-gray-100 selection:text-gray-600 py-1 hover:dark:bg-transparent hover:dark:text-white hover:dark:border-gray-900;
+  @apply rounded-lg hover:(bg-gray-200) text-gray-800 dark:(bg-gray-800 text-pink-300) bg-gray-100 selection:text-gray-600 py-1 hover:dark:bg-transparent hover:dark:text-white hover:dark:border-gray-900;
 }
 
 /* Snippet line numbers */
@@ -114,11 +128,11 @@ p > code {
 }
 
 *[class*='prose'] .anchor {
-  @apply text-zinc-200 no-underline hover:(underline) hover:dark:text-slate-200 underline-offset-8;
+  @apply text-zinc-600 dark:text-gray-500 no-underline hover:(underline) hover:dark:text-slate-200 underline-offset-8;
 }
 
 *[class*='prose'] a {
-  @apply text-[#7982ff] font-bold antialiased hover:(text-blue-500 no-underline) underline decoration-light-500/60 underline-offset-4;
+  @apply text-slate-600 dark:text-slate-200 font-bold antialiased hover:(text-blue-500 no-underline) underline decoration-light-500/60 underline-offset-4;
 }
 
 .prose .anchor {
@@ -137,6 +151,7 @@ p > code {
 .anchor::before {
   @apply text-gray-300 dark:(text-slate-500) hover:(text-slate-200);
   content: '#';
+  @apply mr-1.5 text-xl;
 }
 
 .prose *:hover > .anchor {
@@ -248,8 +263,8 @@ svg {
   @apply !my-0 text-[1.2rem];
 }
 
-#table-of-contents ~ ul {
-  @apply mb-0;
+#table-of-contents li {
+  @apply mb-10 !text-[rgb(121,130,255)];
 }
 
 table {
@@ -260,7 +275,7 @@ table {
 }
 
 a[title='link'] {
-  @apply text-[#7982ff] font-bold antialiased hover:(text-blue-500 no-underline) underline decoration-light-500/100 underline-offset-4;
+  @apply text-blue-400 font-bold antialiased hover:(text-blue-500 no-underline) underline decoration-light-500/100 underline-offset-4;
 }
 
 h1 {

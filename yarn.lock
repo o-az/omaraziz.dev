@@ -4985,11 +4985,6 @@ solid-refresh@^0.4.0:
     "@babel/helper-module-imports" "^7.16.0"
     "@babel/types" "^7.16.0"
 
-solid-use@^0.3.3:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/solid-use/-/solid-use-0.3.4.tgz#871d32b38214035e0c8626b90982ca186405055b"
-  integrity sha512-6i/OgufY6NAhYkB/1d5gU2lROTM9nIMo08qVyaTDp4RjDONf2HgceaEYhvRrQc31IAOBU6xnZ9d6S4rRsLdj9w==
-
 source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"

@@ -19,15 +19,10 @@ export default function Blog() {
 
   return (
     <Page title="Blog">
-      <main class="flex m-3 mt-8 justify-center dark:text-white">
+      <main class="flex m-3 mt-25 justify-center dark:text-white">
         <div class="max-w-xl w-full">
-          <h1
-            class="font-extrabold min-w-full text-left text-black mb-1 tracking-wide col-span-4 row-span-1 ibm-plex-sans-bold dark:text-white"
-            style={{
-              'font-size': 'clamp(6rem, 80%, 200px)',
-            }}
-          >
-            Blog
+          <h1 class="font-extrabold min-w-full text-center text-black mb-7 tracking-wide col-span-4 row-span-1 ibm-plex-sans-bold dark:text-white aspect-w-1 text-7xl">
+            Articles
           </h1>
           <SearchBar onInputChange={searchFiltering} placeholder="Search articles" />
           <div class="min-w-full max-w-xl space-y-7" id="articles">

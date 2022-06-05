@@ -10,10 +10,6 @@
     <meta content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots" />
     <meta name="”robots”" content="”index," follow” />
     <meta name="robots" content="follow, index" />
-    <link href="https://cdn.skypack.dev/sanitize.css" rel="stylesheet" />
-    <link href="https://unpkg.com/sanitize.css/typography.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
 
     <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -54,15 +50,5 @@
   <body class="bg-white text-black dark:bg-[rgb(01,01,01,01)] dark:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script type="module">
-      setTimeout(() => {
-        const headings = document.querySelectorAll('h2, h3, h4, h5, h6')
-        console.log(headings)
-        headings.forEach(heading => {
-          const { id } = heading
-          console.log(id)
-        })
-      }, 200)
-    </script>
   </body>
 </html>

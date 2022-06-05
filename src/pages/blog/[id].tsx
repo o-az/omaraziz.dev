@@ -1,12 +1,10 @@
 import * as Solid from 'solid-js'
-import { Navigate, useParams, useRouteData } from 'solid-app-router'
-import { Meta, Title } from 'solid-meta'
+import { useParams, useRouteData } from 'solid-app-router'
 import type { Article, MetaAttributes } from '@/types'
 import { dateStringToHuman, devLogger } from '@/utilities'
 import { fetchBlogViews } from '@/api/views'
 import resultImage from '/images/syntax-highlight-gist-cdn.png'
 import { Page } from '@/components'
-// import Markdown from '@/data/articles/gist-as-cdn.mdx'
 import('@/styles/markdown.css')
 
 export default function BlogPost() {
@@ -17,15 +15,10 @@ export default function BlogPost() {
   const [blogViews, { mutate, refetch }] = Solid.createResource(() => filename, fetchBlogViews, {
     deferStream: true,
   })
-  // devLogger([filename, article, blogViews()])
+
   const views = () => ({ data: blogViews()?.data, error: blogViews()?.error })
 
-  // Solid.onMount(() => console.log(views()))
-
   Solid.onMount(() => {
-    // const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
-    // console.log(headings)
-
     if (import.meta.env.DEV) return
     const element = document.querySelector('main')
     const range = document.createRange()
@@ -80,7 +73,7 @@ export default function BlogPost() {
 
   return (
     <Page title={article.title} metaTags={metaTags} to404={true}>
-      <main class="flex flex-col mx-auto px-8 justify-center sm:(w-full max-w-3xl px-8) dark:text-gray-200 mb-8 antialiased max-w-full">
+      <main class="flex flex-col mx-auto px-6 justify-center sm:(w-full px-8) max-w-3xl dark:text-gray-200 mb-8 antialiased max-w-full">
         <Solid.Suspense fallback={<span></span>}>
           <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white)">
             {article?.title}

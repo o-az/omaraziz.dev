@@ -1,74 +1,77 @@
-/* Amber Light scheme (Default) */
-/* Can be forced with data-theme="light" */
-/* [data-theme='light'],
-:root:not([data-theme='dark']) {
-  --background-color: #fff;
-  --primary: #ffb300;
-  --primary-hover: #ffa000;
-  --primary-focus: rgba(255, 179, 0, 0.125);
-  --primary-inverse: rgba(0, 0, 0, 0.75);
-} */
-
-/* Amber Dark scheme (Auto) */
-/* Automatically enabled if user has Dark mode enabled */
-@media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    color-scheme: dark;
-    --background-color: rgb(0, 0, 0);
-    --primary: #ffffff55;
-    --primary-hover: #ffffff;
-    --primary-focus: rgba(130, 129, 127, 0.25);
-    --primary-inverse: rgba(0, 0, 0, 0.75);
-  }
-  :root:not([data-theme='dark']) {
-    color-scheme: light;
-    --background-color: rgb(255, 237, 252);
-    --primary: #ffffff;
-    --primary-hover: #100e1d;
-    --primary-focus: rgba(130, 129, 127, 0.25);
-    --primary-inverse: rgba(0, 0, 0, 0.75);
-  }
-}
-
-/* Amber Dark scheme (Forced) */
-/* Enabled if forced with data-theme="dark" */
-/* [data-theme='dark'] {
-  --primary: #ffb300;
-  --primary-hover: #ffc107;
-  --primary-focus: rgba(255, 179, 0, 0.25);
-  --primary-inverse: rgba(0, 0, 0, 0.75);
-} */
-
-/* Amber (Common styles) */
-:root {
-  --form-element-active-border-color: var(--primary);
-  --form-element-focus-color: var(--primary-focus);
-  --switch-color: var(--primary-inverse);
-  --switch-checked-background-color: var(--primary);
-}
-
-:root {
-  --primary: red;
-  --article-background: hsla(234, 38.5%, 5.1%, 1);
-  --shadow-color: hsl(0 0% 25% / 0.2);
-  --shadow-elevation-high: 0.3px 0.5px 0.7px var(--shadow-color), 1.5px 2.9px 3.7px -0.4px var(--shadow-color),
-    2.7px 5.4px 6.8px -0.7px var(--shadow-color), 4.5px 8.9px 11.2px -1.1px var(--shadow-color),
-    7.1px 14.3px 18px -1.4px var(--shadow-color), 11.2px 22.3px 28.1px -1.8px var(--shadow-color),
-    17px 33.9px 42.7px -2.1px var(--shadow-color), 25px 50px 62.9px -2.5px var(--shadow-color);
-}
-
-::selection {
-  background-color: #ffb0ee86;
-  color: #f7f7f7;
-}
-
 html,
 #root {
   min-width: 360px;
   max-width: 100%;
-  /* scroll-behavior: smooth; */
-  @apply w-full max-w-full overflow-hidden top-0 left-0;
+  scroll-behavior: smooth;
+  @apply w-full max-w-full overflow-hidden;
   @apply w-full m-0;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+body {
+  overflow-x: hidden;
+  @apply dark:bg-[rgb(01,01,01,01)] w-full h-full m-0;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  font-family: IBM Plex Sans, sans-serif;
+  @apply mt-25;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
+  box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
+  background-clip: content-box !important;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
+  box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
+  background-clip: content-box !important;
+}
+
+input:-webkit-autofill::first-line {
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-family: IBM Plex Sans, sans-serif;
+}
+
+/* I kinda feel like this should be the default... 🤷‍♂️ */
+[hidden] {
+  pointer-events: none;
+}
+
+/* These elements get removed before hydration but they can look funny before hydrating */
+dark-mode,
+light-mode {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus {
+    transition: outline-offset 0.1s ease;
+    outline-offset: 4px;
+  }
+}
+
+::selection {
+  background-color: rgba(231, 189, 243, 0.913);
+  color: rgb(243, 189, 211);
 }
 
 li::marker {
@@ -141,10 +144,6 @@ a:after {
 
 #skip {
   scroll-margin-top: 1.125rem;
-}
-
-body {
-  @apply dark:bg-[rgb(01,01,01,01)] w-full h-full m-0;
 }
 
 code,

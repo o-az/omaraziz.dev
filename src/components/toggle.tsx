@@ -1,11 +1,16 @@
 import * as Solid from 'solid-js'
+import { emojis } from '@/data'
+import { randomArrayElement } from '@/utilities'
 import type { HTMLElementType } from '@/types'
 
 type Theme = 'light' | 'dark'
 
+const randomEmoji = () => randomArrayElement<typeof emojis[number]>([...emojis])
+
 const htmlTag = document.querySelector<HTMLHtmlElement>('html') as HTMLElementType<HTMLHtmlElement>
 const current: Theme = window && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 const [theme, setTheme] = Solid.createSignal<Theme>(current)
+const [toggleText, setToggleText] = Solid.createSignal(randomEmoji())
 
 type ThemeTargetAttribute = 'class' | 'style' | 'data-theme'
 
@@ -29,6 +34,7 @@ const toggleTheme = () => {
       const { style } = element as HTMLElementType<HTMLElement>
       style.display = currentDataTheme !== nextTheme ? 'none' : 'block'
     })
+    setToggleText(randomEmoji())
     return nextTheme
   })
 }
@@ -38,31 +44,10 @@ export function Toggle() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      class="relative flex h-7 w-8 items-center justify-center rounded-full bg-transparent ring-gray-500 transition-all hover:ring-1 dark:bg-transparent rounded-full mt-[1px]"
+      class="text-3xl pt-2 sm:pt-3 hover:(scale-150 transition transform duration-150 ease-in-out)"
       onClick={toggleTheme}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="h-6 w-6 text-gray-800 dark:text-gray-200"
-      >
-        <circle cx="12" cy="12" r="5" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-      </svg>
+      {toggleText()}
     </button>
   )
 }
