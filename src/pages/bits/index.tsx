@@ -1,7 +1,6 @@
 import * as Solid from 'solid-js'
 import { Link } from 'solid-app-router'
-import clsx from 'clsx'
-import { SearchBar } from '@/components'
+import { SearchBar, Page } from '@/components'
 import snippets from '@/data/snippets/snippets.json'
 import postsInfo from '@/data/articles/articles.json'
 
@@ -21,7 +20,7 @@ const searchFiltering = (event: Event) => {
 
 export default function Bits() {
   return (
-    <Solid.ErrorBoundary fallback={<></>}>
+    <Page title="Bits">
       <main class="m-3 mt-8 dark:text-white flex justify-center">
         <div class="max-w-xl w-full">
           <h1
@@ -54,6 +53,6 @@ export default function Bits() {
           </div>
         </div>
       </main>
-    </Solid.ErrorBoundary>
+    </Page>
   )
 }

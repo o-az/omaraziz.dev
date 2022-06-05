@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth" style="color-scheme: dark">
+<html lang="en" class="dark" style="color-scheme: dark" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <title>Omar 🎞</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link href="/static/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="canonical" href="https://omaraziz.dev/" />
     <meta content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots" />
     <meta name="”robots”" content="”index," follow” />
     <meta name="robots" content="follow, index" />
+    <link href="https://cdn.skypack.dev/sanitize.css" rel="stylesheet" />
+    <link href="https://unpkg.com/sanitize.css/typography.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+
     <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -20,23 +26,24 @@
       crossorigin="anonymous"
     />
     <!-- Primary Meta Tags -->
-<title>Omar</title>
-<meta name="title" content="Omar">
-<meta name="description" content="Software Engineer, OSS contributor">
+    <meta name="title" content="Omar" />
+    <meta name="description" content="Software Engineer, OSS contributor" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://omaraziz.dev/">
-<meta property="og:title" content="Omar">
-<meta property="og:description" content="Software Engineer, OSS contributor">
-<meta property="og:image" content="/images/background.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://omaraziz.dev/" />
+    <meta property="og:title" content="Omar" />
+    <meta property="og:description" content="Software Engineer, OSS contributor" />
+    <meta property="og:image" content="/images/background.png" />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://omaraziz.dev/">
-<meta property="twitter:title" content="Omar">
-<meta property="twitter:description" content="Software Engineer, OSS contributor">
-<meta property="twitter:image" content="/images/background.png">
+    <!-- Twitter -->
+    <meta property="twitter:domain" content="omaraziz.dev" />
+    <meta property="twitter:url" content="https://omaraziz.dev/" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://omaraziz.dev/" />
+    <meta property="twitter:title" content="Omar" />
+    <meta property="twitter:description" content="Software Engineer, OSS contributor" />
+    <meta property="twitter:image" content="/images/background.png" />
     <!-- Microsoft -->
     <meta content="#ffffff" name="msapplication-TileColor" />
     <!-- Safari Tab -->
@@ -47,5 +54,15 @@
   <body class="bg-white text-black dark:bg-[rgb(01,01,01,01)] dark:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      setTimeout(() => {
+        const headings = document.querySelectorAll('h2, h3, h4, h5, h6')
+        console.log(headings)
+        headings.forEach(heading => {
+          const { id } = heading
+          console.log(id)
+        })
+      }, 200)
+    </script>
   </body>
 </html>

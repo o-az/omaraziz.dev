@@ -9,7 +9,7 @@ export default function App() {
   const Route = useRoutes(ROUTES)
 
   return (
-    <Solid.ErrorBoundary fallback={<Navigate href="/404" />}>
+    <Solid.ErrorBoundary fallback={<></>}>
       <MetaProvider>
         {/* <MetaTags title="✨" metas={META_TAGS} /> */}
         <Header />

@@ -1,3 +1,7 @@
+export type MetaAttributes = Partial<Pick<HTMLMetaElement, 'content' | 'httpEquiv' | 'media' | 'scheme' | 'name'>>
+// as unknown as some html element
+export type HTMLElementType<T> = T extends HTMLElement ? T : never
+
 export interface SnippetWorkerResponse {
   code: string
   language: string

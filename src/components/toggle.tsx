@@ -1,19 +1,33 @@
 import * as Solid from 'solid-js'
+import type { HTMLElementType } from '@/types'
 
 type Theme = 'light' | 'dark'
 
-const htmlTag = document.querySelector<HTMLLinkElement>('html') as HTMLElement
+const htmlTag = document.querySelector<HTMLHtmlElement>('html') as HTMLElementType<HTMLHtmlElement>
 const current: Theme = window && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 const [theme, setTheme] = Solid.createSignal<Theme>(current)
+
+type ThemeTargetAttribute = 'class' | 'style' | 'data-theme'
+
+type NextTarget<T extends ThemeTargetAttribute> = [T, Theme | `color-scheme: ${Theme}`]
+
+const themeTargetAttributes = (
+  nextTheme: Theme
+): [NextTarget<'class'>, NextTarget<'data-theme'>, NextTarget<'style'>] => [
+  ['class', nextTheme],
+  ['data-theme', nextTheme],
+  ['style', `color-scheme: ${nextTheme}`],
+]
 
 const toggleTheme = () => {
   const nextTheme = theme() === 'light' ? 'dark' : 'light'
   setTheme(() => {
-    htmlTag.setAttribute('class', nextTheme)
+    themeTargetAttributes(nextTheme).forEach(([attribute, value]) => htmlTag.setAttribute(attribute, value))
     // Update code syntax highlighting theme
-    document.querySelectorAll('[data-theme]').forEach(element => {
+    document.querySelectorAll('[data-language]').forEach(element => {
       const currentDataTheme = element.getAttribute('data-theme')
-      ;(element as HTMLElement).style.display = currentDataTheme !== nextTheme ? 'none' : 'block'
+      const { style } = element as HTMLElementType<HTMLElement>
+      style.display = currentDataTheme !== nextTheme ? 'none' : 'block'
     })
     return nextTheme
   })

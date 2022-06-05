@@ -1,4 +1,55 @@
+/* Amber Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+/* [data-theme='light'],
+:root:not([data-theme='dark']) {
+  --background-color: #fff;
+  --primary: #ffb300;
+  --primary-hover: #ffa000;
+  --primary-focus: rgba(255, 179, 0, 0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+} */
+
+/* Amber Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --background-color: rgb(0, 0, 0);
+    --primary: #ffffff55;
+    --primary-hover: #ffffff;
+    --primary-focus: rgba(130, 129, 127, 0.25);
+    --primary-inverse: rgba(0, 0, 0, 0.75);
+  }
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+    --background-color: rgb(255, 237, 252);
+    --primary: #ffffff;
+    --primary-hover: #100e1d;
+    --primary-focus: rgba(130, 129, 127, 0.25);
+    --primary-inverse: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* Amber Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+/* [data-theme='dark'] {
+  --primary: #ffb300;
+  --primary-hover: #ffc107;
+  --primary-focus: rgba(255, 179, 0, 0.25);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+} */
+
+/* Amber (Common styles) */
 :root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}
+
+:root {
+  --primary: red;
+  --article-background: hsla(234, 38.5%, 5.1%, 1);
   --shadow-color: hsl(0 0% 25% / 0.2);
   --shadow-elevation-high: 0.3px 0.5px 0.7px var(--shadow-color), 1.5px 2.9px 3.7px -0.4px var(--shadow-color),
     2.7px 5.4px 6.8px -0.7px var(--shadow-color), 4.5px 8.9px 11.2px -1.1px var(--shadow-color),
@@ -14,11 +65,65 @@
 html,
 #root {
   min-width: 360px;
-  scroll-behavior: smooth;
+  max-width: 100%;
+  /* scroll-behavior: smooth; */
+  @apply w-full max-w-full overflow-hidden top-0 left-0;
   @apply w-full m-0;
 }
 
-/* .capsize::before {
+li::marker {
+  @apply text-transparent;
+}
+
+a {
+  position: relative;
+  transition: all 0.1s;
+  text-decoration: none;
+  @apply dark:(text-blue-400);
+}
+
+p {
+  @apply dark:(text-white);
+}
+
+a:before,
+a:after {
+  transition: all 0.1s;
+}
+
+.social:before,
+.social:after {
+  position: absolute;
+  top: 3px;
+  color: transparent;
+}
+
+.social:hover::before,
+.social:hover::after {
+  font-size: 1.2em;
+  font-weight: 900;
+  color: rgb(243, 189, 211);
+}
+
+.social:before {
+  content: '\007B';
+  left: -12px;
+}
+
+.social:hover::before {
+  left: -7px;
+}
+
+.social:after {
+  content: '\007D';
+  right: -12px;
+}
+
+.social:hover::after {
+  right: -7px;
+}
+
+.capsize::before {
   content: '';
   margin-bottom: -0.098em;
   display: table;
@@ -28,15 +133,15 @@ html,
   content: '';
   margin-top: -0.219em;
   display: table;
-} */
+}
 
 .skip-nav {
   @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
 }
-/*
+
 #skip {
   scroll-margin-top: 1.125rem;
-} */
+}
 
 body {
   @apply dark:bg-[rgb(01,01,01,01)] w-full h-full m-0;

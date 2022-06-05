@@ -1,61 +1,57 @@
 import * as Solid from 'solid-js'
 import { Navigate, useParams, useRouteData } from 'solid-app-router'
 import { Meta, Title } from 'solid-meta'
-import 'typed-query-selector'
-import type { Article } from '@/types'
+import type { Article, MetaAttributes } from '@/types'
 import { dateStringToHuman, devLogger } from '@/utilities'
-import '@/styles/markdown.css'
 import { fetchBlogViews } from '@/api/views'
 import resultImage from '/images/syntax-highlight-gist-cdn.png'
-
-// setTimeout(() => {
-//   const head = document.querySelector('html>head') as unknown as HTMLHeadElement
-//   const misplacedHead = document.querySelector('article>head') as unknown as HTMLHeadElement
-//   if (!head || !misplacedHead) return
-//   const { innerHTML } = misplacedHead
-//   const range = document.createRange()
-//   const fragment = range.createContextualFragment(`${innerHTML}`)
-//   head.appendChild(fragment)
-//   misplacedHead.remove()
-// }, 100)
+import { Page } from '@/components'
+// import Markdown from '@/data/articles/gist-as-cdn.mdx'
+import('@/styles/markdown.css')
 
 export default function BlogPost() {
-  console.log(resultImage)
   const { id: filename } = useParams<{ id: string }>()
   const Markdown = Solid.lazy(() => import(`../../data/articles/${filename}.mdx`))
   const article = useRouteData<Article>()
 
-  const [blogViews, { mutate, refetch }] = Solid.createResource(() => filename, fetchBlogViews)
+  const [blogViews, { mutate, refetch }] = Solid.createResource(() => filename, fetchBlogViews, {
+    deferStream: true,
+  })
   // devLogger([filename, article, blogViews()])
+  const views = () => ({ data: blogViews()?.data, error: blogViews()?.error })
+
+  // Solid.onMount(() => console.log(views()))
 
   Solid.onMount(() => {
+    // const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
+    // console.log(headings)
+
+    if (import.meta.env.DEV) return
     const element = document.querySelector('main')
     const range = document.createRange()
     const fragment = range.createContextualFragment(
       `<script
-      src="https://giscus.app/client.js"
-      data-repo="o-az/omaraziz.dev"
-      data-repo-id="R_kgDOHUnWOw"
-      data-category="General"
-      data-category-id="DIC_kwDOHUnWO84CPZZM"
-      data-mapping="title"
-      data-reactions-enabled="1"
-
-      data-input-position="top"
-      data-theme="dark"
-      data-lang="en"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      async
-    ></script>`
+        src="https://giscus.app/client.js"
+        data-repo="o-az/omaraziz.dev"
+        data-repo-id="R_kgDOHUnWOw"
+        data-category="General"
+        data-category-id="DIC_kwDOHUnWO84CPZZM"
+        data-mapping="title"
+        data-reactions-enabled="1"
+        data-input-position="top"
+        data-theme="dark"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async
+      ></script>`
     )
-    element?.appendChild(fragment)
     if (import.meta.env.MODE === 'production') {
       element?.appendChild(fragment)
     }
   })
 
-  const metaTags = [
+  const metaTags: MetaAttributes[] = [
     {
       name: 'description',
       content: article.description,
@@ -82,18 +78,9 @@ export default function BlogPost() {
     },
   ]
 
-  // const views =
-  //   blogViews.error || blogViews()?.error || !blogViews()?.data || !blogViews()?.data?.views
-  //     ? ''
-  //     : ` • ${blogViews()?.data?.views} views`
-  // console.log(views)
   return (
-    <Solid.ErrorBoundary fallback={<></>}>
-      <Title>{article.title}</Title>
-      {metaTags.map(({ name, content }) => (
-        <Meta name={name} content={content} />
-      ))}
-      <main class="flex flex-col mx-auto px-8 justify-center sm:(w-full max-w-3xl px-8) dark:text-gray-200 mb-8 antialiased">
+    <Page title={article.title} metaTags={metaTags} to404={true}>
+      <main class="flex flex-col mx-auto px-8 justify-center sm:(w-full max-w-3xl px-8) dark:text-gray-200 mb-8 antialiased max-w-full">
         <Solid.Suspense fallback={<span></span>}>
           <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white)">
             {article?.title}
@@ -119,13 +106,13 @@ export default function BlogPost() {
           </ul>
           <article
             id="article"
-            class="flex flex-col h-full m- min-w-full mt-6 mb-16 items-start justify-center prose prose-img:rounded-xl prose-img:(border-b-2 prose-a:(text-blue-700) dark:(prose-invert text-gray-700) truncate w-full"
+            class="flex flex-col h-full m- min-w-full mt-6 mb-16 items-start justify-center prose prose-img:rounded-xl prose-img:(border-b-2 prose-a:(text-blue-300) dark:(prose-invert text-gray-700) truncate max-w-full prose-p:text-white text-white"
           >
             <Markdown />
           </article>
         </Solid.Suspense>
         <div class="giscus"></div>
       </main>
-    </Solid.ErrorBoundary>
+    </Page>
   )
 }

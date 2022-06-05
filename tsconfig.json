@@ -45,6 +45,7 @@
       "@types/mdx",
       "vite/client",
       "solid-jsx/types",
+      "typed-query-selector",
       "@cloudflare/workers-types"
     ],
     "paths": {
@@ -53,10 +54,7 @@
     }
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": [
-    "node_modules",
-    ".scratch"
-  ],
+  "exclude": ["node_modules", ".scratch"],
   "include": ["src", "test", "functions"],
   "ts-node": {
     "swc": true,

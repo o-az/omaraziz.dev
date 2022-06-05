@@ -1,5 +1,12 @@
 :root {
+  --article-background: hsla(234, 38.5%, 5.1%, 1);
 }
+
+* {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
 
 html.dark {
   [data-theme='light'] {
@@ -15,9 +22,21 @@ html.light {
   }
 }
 
+* {
+  @apply max-w-full;
+}
+
+article {
+  background: var(--article-background);
+  border-color: rgba(10, 12, 25, 0.677);
+  /* box-shadow: 10px 10px 10px 10px rgba(255, 255, 255, 0.5); */
+  /* box-shadow: 0 0 0 0.7em #f4aab9, 0 0 0 1.5em rgba(239, 26, 26, 0.5); */
+  @apply w-full max-w-full overflow-hidden rounded-md border-3;
+}
+
 p,
 span {
-  @apply whitespace-pre-wrap;
+  @apply whitespace-pre-wrap text-gray-100;
 }
 
 *[class*='prose'] pre {
@@ -25,7 +44,7 @@ span {
 }
 
 *[class*='prose'] div[data-rehype-pretty-code-fragment] {
-  @apply w-full min-w-full leading-[1.55rem] dark:(bg-[hsl(0,0%,25%/0.2)] border-zinc-900) hover:(cursor-text border) border border-gray-200 bg-gray-200 text-sm sm:text-base font-extralight overflow-hidden rounded-lg sm:rounded-md p-1 my-3;
+  @apply w-full min-w-full max-w-full leading-[1.55rem] dark:(bg-[hsl(0,0%,25%/0.2)] border-zinc-900) hover:(cursor-text border) border border-gray-200 bg-gray-200 text-sm sm:text-base font-extralight overflow-hidden rounded-lg sm:rounded-md p-1 my-3;
 }
 
 *[class*='prose'] > p ~ div[data-rehype-pretty-code-fragment] {
@@ -56,12 +75,12 @@ span {
 
 span.line,
 span.line > span {
-  @apply select-all selection:(bg-pink-200 text-gray-700) break-all overflow-auto max-w-full whitespace-nowrap;
+  @apply select-all selection:(bg-pink-200 text-gray-700) break-all overflow-auto max-w-full whitespace-pre;
 }
 
 /** In line code */
 p > code {
-  @apply rounded-lg hover:(bg-gray-200 dark:(bg-transparent text-white border-gray-900)) text-gray-800 dark:(bg-gray-900 text-lightBlue-300) bg-gray-100 selection:text-gray-600 py-1;
+  @apply rounded-lg hover:(bg-gray-200) text-gray-800 dark:(bg-gray-800 text-lightBlue-300) bg-gray-100 selection:text-gray-600 py-1 hover:dark:bg-transparent hover:dark:text-white hover:dark:border-gray-900;
 }
 
 /* Snippet line numbers */
@@ -86,16 +105,16 @@ p > code {
 }
 
 .anchor:hover {
-  @apply visible;
+  @apply visible dark:text-slate-200;
 }
 
 *[class*='prose'] code::after,
 *[class*='prose'] code::before {
-  @apply text-transparent;
+  @apply hidden;
 }
 
 *[class*='prose'] .anchor {
-  @apply text-zinc-200 no-underline hover:(underline dark:text-zinc-600) underline-offset-8;
+  @apply text-zinc-200 no-underline hover:(underline) hover:dark:text-slate-200 underline-offset-8;
 }
 
 *[class*='prose'] a {
@@ -103,8 +122,8 @@ p > code {
 }
 
 .prose .anchor {
-  @apply absolute invisible no-underline w-full;
-  @apply -ml-6 pr-6 w-full max-w-[700px] cursor-pointer;
+  @apply no-underline w-full;
+  @apply -ml-2 pr-2 w-full max-w-[700px] cursor-pointer;
 }
 
 .anchor:hover {
@@ -116,7 +135,7 @@ p > code {
 }
 
 .anchor::before {
-  @apply text-gray-300 dark:text-gray-600;
+  @apply text-gray-300 dark:(text-slate-500) hover:(text-slate-200);
   content: '#';
 }
 
@@ -130,7 +149,7 @@ p > code {
 *[class*='prose'] h4,
 *[class*='prose'] h5 {
   font-family: Inter Bold !important;
-  @apply mt-4 mb-4 w-full dark:(text-slate-200) hover:(dark:(text-white));
+  @apply mt-4 mb-4 w-full text-slate-400 dark:hover:text-white hover:(cursor-pointer);
 }
 
 *[class*='prose'] pre code {
@@ -209,7 +228,7 @@ input[type='email'] {
 }
 
 svg {
-  @apply dark:(text-light-50);
+  @apply text-light-50;
 }
 
 .step > h3 {
@@ -226,7 +245,7 @@ svg {
 }
 
 #table-of-contents {
-  @apply !my-0;
+  @apply !my-0 text-[1.2rem];
 }
 
 #table-of-contents ~ ul {
@@ -247,9 +266,4 @@ a[title='link'] {
 h1 {
   font-family: Inter Bold;
   @apply text-4xl;
-}
-
-* {
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
 }

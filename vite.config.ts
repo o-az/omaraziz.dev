@@ -37,11 +37,7 @@ const config = async (): Promise<UserConfig> => {
       host: '0.0.0.0',
       port: Number(process.env.PORT || 3000),
       proxy: process.env.NODE_ENV ? viteProxy : undefined,
-      headers: {
-        'x-omar-testing': 'true',
-      },
     },
-    // json: { stringify: true },
     preview: { port: Number(process.env.PORT || 3000) + 1 },
     resolve: { alias: { '@/': './src' } },
     optimizeDeps: { include: ['solid-js/h/jsx-runtime'] },
