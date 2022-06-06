@@ -1,3 +1,7 @@
+.gsc-main {
+  @apply text-4xl text-red-500;
+}
+
 :root {
   --article-background-dark: rgb(29, 225, 49);
   --article-background-light: hsla(244, 49.5%, 97%, 11);

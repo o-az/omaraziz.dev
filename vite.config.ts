@@ -42,7 +42,7 @@ const config = async (): Promise<UserConfig> => {
     resolve: { alias: { '@/': './src' } },
     optimizeDeps: { include: ['solid-js/h/jsx-runtime'] },
     build: { target: 'esnext', polyfillDynamicImport: false },
-    clearScreen: false,
+    clearScreen: true,
     /** vitest */
     test: { globals: true },
   }

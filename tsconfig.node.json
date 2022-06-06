@@ -9,13 +9,6 @@
     "resolveJsonModule": true,
     "types": []
   },
-  "include": [
-    "vite.config.ts",
-    "mdx.config.ts",
-    "public/assets/mdx-theme/*.json"
-  ],
-  "exclude": [
-    "node_modules",
-    ".scratch"
-  ]
+  "include": ["vite.config.ts", "mdx.config.ts", "public/assets/mdx-theme/*.json"],
+  "exclude": ["node_modules", ".scratch"]
 }

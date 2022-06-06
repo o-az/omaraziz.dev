@@ -3,7 +3,7 @@ html,
   min-width: 360px;
   max-width: 100%;
   scroll-behavior: smooth;
-  @apply w-full max-w-full overflow-hidden;
+  @apply w-full max-w-full overflow-x-hidden;
   @apply w-full m-0;
 }
 

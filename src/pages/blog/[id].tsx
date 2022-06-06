@@ -5,7 +5,7 @@ import { dateStringToHuman, devLogger } from '@/utilities'
 import { fetchBlogViews } from '@/api/views'
 import resultImage from '/images/syntax-highlight-gist-cdn.png'
 import { Page } from '@/components'
-import('@/styles/markdown.css')
+import '@/styles/markdown.css'
 
 export default function BlogPost() {
   const { id: filename } = useParams<{ id: string }>()
@@ -16,10 +16,8 @@ export default function BlogPost() {
     deferStream: true,
   })
 
-  const views = () => ({ data: blogViews()?.data, error: blogViews()?.error })
-
   Solid.onMount(() => {
-    if (import.meta.env.DEV) return
+    // if (import.meta.env.DEV) return
     const element = document.querySelector('main')
     const range = document.createRange()
     const fragment = range.createContextualFragment(
@@ -39,9 +37,24 @@ export default function BlogPost() {
         async
       ></script>`
     )
-    if (import.meta.env.MODE === 'production') {
-      element?.appendChild(fragment)
-    }
+    element?.appendChild(fragment)
+    // if (import.meta.env.MODE === 'production') {
+    // element?.appendChild(fragment)
+    // }
+  })
+  Solid.onMount(() => {
+    setTimeout(() => {
+      try {
+        // const giscusiFrame = document.querySelector('.giscus-frame') as HTMLIFrameElement
+        // const range = document.createRange()
+        // const fragment = range.createContextualFragment(`{ em: { color: red } }`)
+        // giscusiFrame.contentWindow?.document?.appendChild(fragment)
+        // console.log(giscusiFrame.contentWindow?.document.getElementsByTagName('em'))
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : `Encoutered an error: ` + error
+        devLogger(['iframe attempt', errorMessage])
+      }
+    }, 5000)
   })
 
   const metaTags: MetaAttributes[] = [
