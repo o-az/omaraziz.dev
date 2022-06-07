@@ -8,11 +8,17 @@ import { Page } from '@/components'
 import '@/styles/markdown.css'
 
 function applyTargetAttribute(element: HTMLAnchorElement) {
-  const id = element.getAttribute('href')
-  if (!id) return
-  const currentTarget = element.getAttribute('target')
-  if (currentTarget) return
-  element.setAttribute('target', `_top`.replace(/^#/, ''))
+  const target = element.getAttribute('target')
+  if (target) return
+  const href = element.getAttribute('href')
+  if (!href) return
+  if (href.startsWith('http')) {
+    element.setAttribute('target', '_blank')
+    return
+  } else if (href.startsWith('#')) {
+    element.setAttribute('target', `_top`)
+    return
+  }
 }
 
 export default function BlogPost() {
