@@ -5,6 +5,7 @@ html,
   scroll-behavior: smooth;
   @apply w-full max-w-full overflow-x-hidden;
   @apply w-full m-0;
+  overflow-anchor: unset !important;
 }
 
 :focus:not(:focus-visible) {

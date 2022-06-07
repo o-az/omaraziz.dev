@@ -7,6 +7,14 @@ import resultImage from '/images/syntax-highlight-gist-cdn.png'
 import { Page } from '@/components'
 import '@/styles/markdown.css'
 
+function applyTargetAttribute(element: HTMLAnchorElement) {
+  const id = element.getAttribute('href')
+  if (!id) return
+  const currentTarget = element.getAttribute('target')
+  if (currentTarget) return
+  element.setAttribute('target', `_top`.replace(/^#/, ''))
+}
+
 export default function BlogPost() {
   const { id: filename } = useParams<{ id: string }>()
   const Markdown = Solid.lazy(() => import(`../../data/articles/${filename}.mdx`))
@@ -38,23 +46,12 @@ export default function BlogPost() {
       ></script>`
     )
     element?.appendChild(fragment)
-    // if (import.meta.env.MODE === 'production') {
-    // element?.appendChild(fragment)
-    // }
   })
   Solid.onMount(() => {
     setTimeout(() => {
-      try {
-        // const giscusiFrame = document.querySelector('.giscus-frame') as HTMLIFrameElement
-        // const range = document.createRange()
-        // const fragment = range.createContextualFragment(`{ em: { color: red } }`)
-        // giscusiFrame.contentWindow?.document?.appendChild(fragment)
-        // console.log(giscusiFrame.contentWindow?.document.getElementsByTagName('em'))
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : `Encoutered an error: ` + error
-        devLogger(['iframe attempt', errorMessage])
-      }
-    }, 5000)
+      const anchors = document.querySelectorAll('a')
+      anchors.forEach(applyTargetAttribute)
+    }, 1000)
   })
 
   const metaTags: MetaAttributes[] = [
@@ -104,9 +101,7 @@ export default function BlogPost() {
           <ul class="text-center sm:(text-left)">
             {article.tags.map(tag => (
               <li class="rounded-sm font-semibold bg-gray-200 text-sm mr-2 py-1 px-2 text-gray-700 inline-block dark:(text-gray-300 bg-gray-800) hover:(text-white font-bold bg-gray-400 cursor-text)">
-                <a class="focus:outline-none hover:(cursor-text)" aria-label="" href="*">
-                  {tag}
-                </a>
+                <p class="focus:outline-none hover:(cursor-text)">{tag}</p>
               </li>
             ))}
           </ul>

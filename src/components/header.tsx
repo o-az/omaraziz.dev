@@ -34,9 +34,9 @@ export function Header() {
   return (
     <div class="flex my-3 m-3 h-full w-full justify-between px-5 pt-1 bg-transparent h-full subpixel-antialiased ibm-plex-sans">
       <nav class="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto bg-opacity-60 px-6 text-xl align-bottom">
-        <a href="#skip" class="skip-nav">
+        {/* <a href="#skip" class="skip-nav">
           Skip to content
-        </a>
+        </a> */}
         <div class="ml-[-0.60rem] space-x-7 flex">
           <Solid.For each={HEADER_ITEMS}>
             {({ name, path }) => (

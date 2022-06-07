@@ -35,7 +35,7 @@ const remarkGfmOptions: RemarkGfmOptions = {
 const remarkToCOptions: RemarkToCOptions = {
   tight: true,
   ordered: false,
-  prefix: undefined,
+  prefix: '',
   skip: undefined,
   parents: undefined,
   maxDepth: 2,
