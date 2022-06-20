@@ -1,0 +1,6 @@
+[submodule "implementations/svelte"]
+	path = implementations/svelte
+	url = git@github.com:o-az/svelte.omaraziz.dev.git
+[submodule "implementations/fresh"]
+	path = implementations/fresh
+	url = git@github.com:o-az/fresh.omaraziz.dev.git

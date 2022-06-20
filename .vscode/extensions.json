@@ -4,7 +4,6 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "voorjaar.windicss-intellisense",
-    "GitHub.copilot-nightly"
+    "voorjaar.windicss-intellisense"
   ]
 }
