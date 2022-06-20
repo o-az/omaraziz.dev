@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from 'solid-js';
 
 export const META_TAGS: Array<Pick<JSX.MetaHTMLAttributes<HTMLMetaElement>, 'name' | 'content'>> = [
   {
@@ -62,4 +62,4 @@ export const META_TAGS: Array<Pick<JSX.MetaHTMLAttributes<HTMLMetaElement>, 'nam
     name: 'twitter:image',
     content: '',
   },
-]
+];

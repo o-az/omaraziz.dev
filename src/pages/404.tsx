@@ -6,5 +6,5 @@ export default function NotFound() {
         <p class="text-2xl text-gray-700 dark:text-gray-400">The page you are looking for does not exist.</p>
       </section>
     </main>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import type { RouteDefinition } from 'solid-app-router'
-import * as Solid from 'solid-js'
-import articles from '@/data/articles/articles.json'
+import * as Solid from 'solid-js';
+import type { RouteDefinition } from 'solid-app-router';
+import articles from '@/data/articles/articles.json';
 
 export const ROUTES: RouteDefinition[] = [
   { path: '/', component: Solid.lazy(() => import('@/pages/home')) },
@@ -20,18 +20,9 @@ export const ROUTES: RouteDefinition[] = [
     ],
   },
   {
-    path: '/bits',
-    children: [
-      {
-        path: '/',
-        component: Solid.lazy(() => import('@/pages/bits')),
-      },
-      {
-        path: '/:id',
-        component: Solid.lazy(() => import('@/pages/bits/[id]')),
-      },
-    ],
+    path: '/gm',
+    component: Solid.lazy(() => import('@/pages/gm')),
   },
   { path: '/projects', component: Solid.lazy(() => import('@/pages/projects')) },
   { path: '*', component: Solid.lazy(() => import('@/pages/404')) },
-]
+];

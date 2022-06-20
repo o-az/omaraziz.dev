@@ -1,21 +1,21 @@
-import clsx from 'clsx'
-import * as Solid from 'solid-js'
+import clsx from 'clsx';
+import * as Solid from 'solid-js';
 
-import { SearchIcon } from '@/components/icons'
+import { SearchIcon } from '@/components/icons';
 
-const text = `Hit / to search`
+const text = `Hit / to search`;
 
-export function SearchBar(props: { placeholder: string; onInputChange: (event: InputEvent | Event) => void }) {
-  const [{ placeholder, onInputChange }] = Solid.splitProps(props, ['placeholder', 'onInputChange'])
+export default function SearchBar(props: { placeholder: string; onInputChange: (event: InputEvent | Event) => void }) {
+  const [{ placeholder, onInputChange }] = Solid.splitProps(props, ['placeholder', 'onInputChange']);
 
   Solid.createEffect(() => {
-    const inputElement = document.getElementById('search') as HTMLInputElement
+    const inputElement = document.getElementById('search') as HTMLInputElement;
     document.onkeydown = async (event: KeyboardEvent) => {
-      if (event.key !== '/') return
-      event.preventDefault()
-      inputElement.focus()
-    }
-  })
+      if (event.key !== '/') return;
+      event.preventDefault();
+      inputElement.focus();
+    };
+  });
 
   return (
     <div class="relative mb-6 w-full w-full">
@@ -31,5 +31,5 @@ export function SearchBar(props: { placeholder: string; onInputChange: (event: I
       />
       <SearchIcon />
     </div>
-  )
+  );
 }

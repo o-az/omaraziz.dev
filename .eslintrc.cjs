@@ -12,13 +12,13 @@ module.exports = {
     ecmaFeatures: { jsx: true, impliedStrict: true },
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'simple-import-sort'],
+  plugins: ['@typescript-eslint', 'simple-import-sort', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:mdx/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
+    'prettier',
   ],
   settings: {
     'import/resolver': {
@@ -31,8 +31,11 @@ module.exports = {
     'mdx/language-mapper': {},
   },
   rules: {
+    'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
+    '@typescript-eslint/ban-ts-comment': ['off'],
+    '@typescript-eslint/no-explicit-any': ['off'],
+    'mdx/no-unused-expressions': ['off'],
     'prefer-const': ['off'],
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'jsx-a11y/accessible-emoji': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -67,4 +70,4 @@ module.exports = {
       },
     ],
   },
-}
+};

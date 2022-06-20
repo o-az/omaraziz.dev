@@ -1,111 +1,88 @@
-import * as Solid from 'solid-js'
-import { useParams, useRouteData } from 'solid-app-router'
-import type { Article, MetaAttributes } from '@/types'
-import { dateStringToHuman, devLogger } from '@/utilities'
-import { fetchBlogViews } from '@/api/views'
-import resultImage from '/images/syntax-highlight-gist-cdn.png'
-import { Page } from '@/components'
-import '@/styles/markdown.css'
+import * as Solid from 'solid-js';
+import { useParams, useRouteData } from 'solid-app-router';
+import type { Article, MetaAttributes } from '@/types';
+import { dateStringToHuman, devLogger, addAnchorsTarget, loadExternalScript } from '@/utilities';
+import { fetchBlogViews } from '@/api/views';
+import('@/styles/markdown.css');
+const Page = Solid.lazy(() => import('@/components/page'));
 
-function applyTargetAttribute(element: HTMLAnchorElement) {
-  const target = element.getAttribute('target')
-  if (target) return
-  const href = element.getAttribute('href')
-  if (!href) return
-  if (href.startsWith('http')) {
-    element.setAttribute('target', '_blank')
-    return
-  } else if (href.startsWith('#')) {
-    element.setAttribute('target', `_top`)
-    return
-  }
-}
+const giscusScript = `
+<script
+  src="https://giscus.app/client.js"
+  data-repo="o-az/omaraziz.dev"
+  data-repo-id="R_kgDOHUnWOw"
+  data-category="General"
+  data-category-id="DIC_kwDOHUnWO84CPZZM"
+  data-mapping="title"
+  data-reactions-enabled="1"
+  data-input-position="top"
+  data-theme="dark"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async
+></script>`;
 
 export default function BlogPost() {
-  const { id: filename } = useParams<{ id: string }>()
-  const Markdown = Solid.lazy(() => import(`../../data/articles/${filename}.mdx`))
-  const article = useRouteData<Article>()
+  const { id: filename } = useParams<{ id: string }>();
+  const Markdown = Solid.lazy(() => import(`../../data/articles/${filename}.mdx`));
+  const { title, description, date, readingTime, tags } = useRouteData<Article>();
 
-  const [blogViews, { mutate, refetch }] = Solid.createResource(() => filename, fetchBlogViews, {
+  const [blogViews] = Solid.createResource(() => filename, fetchBlogViews, {
     deferStream: true,
-  })
+  });
 
   Solid.onMount(() => {
-    // if (import.meta.env.DEV) return
-    const element = document.querySelector('main')
-    const range = document.createRange()
-    const fragment = range.createContextualFragment(
-      `<script
-        src="https://giscus.app/client.js"
-        data-repo="o-az/omaraziz.dev"
-        data-repo-id="R_kgDOHUnWOw"
-        data-category="General"
-        data-category-id="DIC_kwDOHUnWO84CPZZM"
-        data-mapping="title"
-        data-reactions-enabled="1"
-        data-input-position="top"
-        data-theme="dark"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async
-      ></script>`
-    )
-    element?.appendChild(fragment)
-  })
-  Solid.onMount(() => {
-    setTimeout(() => {
-      const anchors = document.querySelectorAll('a')
-      anchors.forEach(applyTargetAttribute)
-    }, 1000)
-  })
+    loadExternalScript({ script: giscusScript, devEnabled: true, parentElement: 'main' });
+    addAnchorsTarget();
+  });
 
   const metaTags: MetaAttributes[] = [
     {
       name: 'description',
-      content: article.description,
+      content: description,
     },
     {
       name: 'keywords',
-      content: article.tags.join(', '),
+      content: tags.join(', '),
     },
     {
       name: 'og:title',
-      content: article.title,
+      content: title,
     },
     {
       name: 'og:description',
-      content: article.description,
+      content: description,
     },
     {
       name: 'twitter:title',
-      content: article.title,
+      content: title,
     },
     {
       name: 'twitter:description',
-      content: article.description,
+      content: description,
     },
-  ]
+  ];
 
   return (
-    <Page title={article.title} metaTags={metaTags} to404={true}>
-      <main class="flex flex-col mx-auto px-6 justify-center sm:(w-full px-8) max-w-3xl dark:text-gray-200 mb-8 antialiased max-w-full">
+    <Page title={title} metaTags={metaTags} to404={true}>
+      <main class="flex flex-col mx-auto px-6 justify-center sm:(w-full px-8) max-w-4xl dark:text-gray-200 mb-8 antialiased w-full overflow-hidden sm:p-6">
         <Solid.Suspense fallback={<span></span>}>
-          <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white)">
-            {article?.title}
+          <h1 class="font-bold text-black text-center tracking-tight text-4xl sm:(text-left) md:(text-6xl) dark:(text-white) font-sans font-extrabold">
+            {title}
           </h1>
           <div class="flex flex-col my-4 text-sm mb-4 w-full text-gray-600 items-start justify-between subpixel-antialiased md:(items-center flex-row) dark:(text-gray-200) ">
-            <p class="text-center ml-2 w-full sm:(text-left)">Omar Aziz / {dateStringToHuman(article.date)}</p>
+            <p class="text-center ml-2 w-full sm:(text-left)">Omar Aziz / {dateStringToHuman(date)}</p>
 
             <p class="mt-2 text-center w-full sm:(text-right) md:(mt-0)">
-              {article.readingTime}{' '}
+              {readingTime}{' '}
               {blogViews.error || blogViews()?.error || !blogViews()?.data || !blogViews()?.data?.views
                 ? ''
                 : ` • ${blogViews()?.data?.views} views`}
             </p>
           </div>
           <ul class="text-center sm:(text-left)">
-            {article.tags.map(tag => (
+            {tags.map(tag => (
               <li class="rounded-sm font-semibold bg-gray-200 text-sm mr-2 py-1 px-2 text-gray-700 inline-block dark:(text-gray-300 bg-gray-800) hover:(text-white font-bold bg-gray-400 cursor-text)">
                 <p class="focus:outline-none hover:(cursor-text)">{tag}</p>
               </li>
@@ -121,5 +98,5 @@ export default function BlogPost() {
         <div class="giscus"></div>
       </main>
     </Page>
-  )
+  );
 }

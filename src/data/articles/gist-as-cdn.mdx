@@ -4,8 +4,8 @@ publishedOn: '2022-05-15'
 image: /images/gist-as-cdn.jpg
 ---
 
-import { Image } from '@/components/image'
-import resultImage from '/images/syntax-highlight-gist-cdn.png'
+import { Image } from '@/components/image';
+import resultImage from '/images/syntax-highlight-gist-cdn.png';
 
 ## Table of contents
 
@@ -20,7 +20,7 @@ To test out this plan, I stored some [borrowed CSS in a gist](https://gist.githu
 #### First attempt
 
 ```js
-import 'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/306a5b678779e79b842b09e54f166a7e349bb9a6/stylesheet.css'
+import 'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/306a5b678779e79b842b09e54f166a7e349bb9a6/stylesheet.css';
 ```
 
 #### First obstacle
@@ -69,28 +69,28 @@ The setup for the third attempt:
 ```js title=" "
 // url
 const gistURL =
-  'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/6070da8ac2821ffc94de51f1a3bc1b30d862643c/stylesheet.css'
+  'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/6070da8ac2821ffc94de51f1a3bc1b30d862643c/stylesheet.css';
 
 const attributes = [
   ['data-title', 'EXTERNAL_CSS'],
   ['data-url', gistURL],
-]
+];
 ```
 
 Fetch the content of the gist as plain text, create a `<style>` element, insert plain text style to style element, set the attirbutes we defined above, append it to the document `<head>`.
 
 ```js title=" "
 async function fetchGistContent(url) {
-  const response = await fetch(url)
-  return await response.text()
+  const response = await fetch(url);
+  return await response.text();
 }
 
 async function importGistCSS(url) {
-  const plainTextCSS = await fetchGistContent(url)
-  const style = document.createElement('style')
-  style.textContent = plainTextCSS
-  attributes.forEach(([name, value]) => style.setAttribute(name, value))
-  document.head.appendChild(style)
+  const plainTextCSS = await fetchGistContent(url);
+  const style = document.createElement('style');
+  style.textContent = plainTextCSS;
+  attributes.forEach(([name, value]) => style.setAttribute(name, value));
+  document.head.appendChild(style);
 }
 ```
 
@@ -101,45 +101,45 @@ To test this, I put it all together in a `<script>` tag. You probably want bette
 ```html title="index.html"
 <script type="module">
   const gistURL =
-    'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/6070da8ac2821ffc94de51f1a3bc1b30d862643c/stylesheet.css'
+    'https://gist.githubusercontent.com/o-az/eb41ae192797f424f8053ffad98cc10b/raw/6070da8ac2821ffc94de51f1a3bc1b30d862643c/stylesheet.css';
 
   const attributes = [
     ['data-title', 'EXTERNAL_CSS'],
     ['data-url', gistURL],
-  ]
+  ];
 
   async function fetchGistContent(url) {
-    const response = await fetch(url)
-    return await response.text()
+    const response = await fetch(url);
+    return await response.text();
   }
 
   async function importGistCSS(url) {
-    const plainTextCSS = await fetchGistContent(url)
-    const style = document.createElement('style')
-    style.textContent = plainTextCSS // set style
+    const plainTextCSS = await fetchGistContent(url);
+    const style = document.createElement('style');
+    style.textContent = plainTextCSS; // set style
     // set attributes
-    attributes.forEach(([name, value]) => style.setAttribute(name, value))
+    attributes.forEach(([name, value]) => style.setAttribute(name, value));
     // append new style to head
-    document.head.appendChild(style)
+    document.head.appendChild(style);
   }
 
   importGistCSS(gistURL)
     .then(() => {
-      const { head } = document
+      const { head } = document;
       // access the last style element in head, that would be our style
-      const lastStyle = [...head.getElementsByTagName('style')].pop()
+      const lastStyle = [...head.getElementsByTagName('style')].pop();
       // check if the style element has the `data-attribute`s we defined above
       for (const [attribute, value] of attributes) {
-        const attributeValue = lastStyle.getAttribute(attribute)
+        const attributeValue = lastStyle.getAttribute(attribute);
         if (attributeValue !== value) {
-          console.log(`❌  could not find ${attribute} with value ${value}`)
-          return
+          console.log(`❌  could not find ${attribute} with value ${value}`);
+          return;
         }
-        console.log(`✅  found ${attribute} with value ${value}`)
+        console.log(`✅  found ${attribute} with value ${value}`);
       }
-      console.log('✅  all attributes found. Stylesheet successfully imported.')
+      console.log('✅  all attributes found. Stylesheet successfully imported.');
     })
-    .catch(console.error)
+    .catch(console.error);
 </script>
 <body>
   <pre class="language-js">

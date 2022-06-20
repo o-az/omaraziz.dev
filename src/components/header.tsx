@@ -1,47 +1,44 @@
-import * as Solid from 'solid-js'
-import { Link } from 'solid-app-router'
-
-import { Toggle } from '@/components'
-import { environment } from '@/env'
+import * as Solid from 'solid-js';
+import { Link } from 'solid-app-router';
+import { Toggle } from '@/components';
 
 interface HeaderItem {
-  name: string
-  path: string
+  name: string;
+  path: string;
 }
 
 const HEADER_ITEMS: ReadonlyArray<HeaderItem> = [
   {
-    name: 'Home',
+    name: 'home',
     path: '/',
   },
   {
-    name: 'Blog',
+    name: 'blog',
     path: '/blog',
   },
+  // {
+  //   name: 'projects',
+  //   path: '/projects',
+  // },
+  // {
+  //   name: 'gm',
+  //   path: '/gm',
+  // },
   // {
   //   name: 'Bits',
   //   path: '/bits',
   // },
-  // {
-  //   name: 'Projects',
-  //   path: '/projects',
-  // },
-] as const
+] as const;
 
 export function Header() {
-  // TODO: don't forget to remove this
-  // if (environment.PROD) return null
   return (
-    <div class="flex my-3 m-3 h-full w-full justify-between px-5 pt-1 bg-transparent h-full subpixel-antialiased ibm-plex-sans">
-      <nav class="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto bg-opacity-60 px-6 text-xl align-bottom">
-        {/* <a href="#skip" class="skip-nav">
-          Skip to content
-        </a> */}
-        <div class="ml-[-0.60rem] space-x-7 flex">
+    <div class="flex m-3 mb-20 h-full w-full justify-between px-4 sm:px-5 pt-1 bg-transparent h-full subpixel-antialiased">
+      <nav class="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto bg-opacity-60 sm:px-6 text-2xl font-normal align-bottom font-mono">
+        <div class="space-x-4 sm:space-x-7 flex">
           <Solid.For each={HEADER_ITEMS}>
             {({ name, path }) => (
               <Link
-                class="rounded-lg font-bold text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:px-3 sm:w-auto text-2xl align-bottom"
+                class="rounded-lg text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:px-3 sm:w-auto align-bottom"
                 href={path}
               >
                 {name}
@@ -49,8 +46,10 @@ export function Header() {
             )}
           </Solid.For>
         </div>
-        <Toggle />
+        <div class="text-center sm:text-right sm:pr-5 w-full h-full align-middle sm:pb-2">
+          <Toggle />
+        </div>
       </nav>
     </div>
-  )
+  );
 }

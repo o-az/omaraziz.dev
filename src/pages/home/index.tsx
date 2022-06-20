@@ -1,9 +1,9 @@
-import * as Solid from 'solid-js'
-import { Page } from '@/components'
+import * as Solid from 'solid-js';
+const Page = Solid.lazy(() => import('@/components/page'));
 
 interface LinkItem {
-  name: string
-  path: string
+  name: string;
+  path: string;
 }
 
 export const LINKS: ReadonlyArray<LinkItem> = [
@@ -19,14 +19,14 @@ export const LINKS: ReadonlyArray<LinkItem> = [
     name: 'Email',
     path: 'mailto:me@omaraziz.dev',
   },
-] as const
+] as const;
 
 export default function Home() {
   return (
     <Page title="✨">
-      <main class="mt-20 relative grid grid-flow-col items-center text-center text-white h-full">
-        <section class="grid items-center mx-1 sm:mx-30 space-y-6">
-          <p class="text-black dark:(text-[#f7f7f7]) tracking-normal font-extrabold text-center jet-brains-bold aspect-w-1 text-9xl px-6">
+      <main class="mt-30 sm:mt-50 relative grid grid-flow-col items-center text-center text-white h-full">
+        <section class="grid items-center mx-1 sm:mx-30 space-y-6 lg:flex items-center text-center overflow-hidden">
+          <p class="text-black dark:(text-[#f7f7f7]) tracking-tighter font-extrabold text-center aspect-w-1 text-9xl px-6 font-sans">
             Omar Aziz
           </p>
           <div class="flex justify-center text-xl md:text-4xl">
@@ -42,12 +42,12 @@ export default function Home() {
                   >
                     {name}
                   </a>
-                )
+                );
               }}
             </Solid.For>
           </div>
         </section>
       </main>
     </Page>
-  )
+  );
 }

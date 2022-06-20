@@ -1,5 +1,5 @@
-import { writeFile } from 'fs/promises'
-import RSS from 'rss'
+import { writeFile } from 'fs/promises';
+import RSS from 'rss';
 
 /**
  * INPORTANT: this won't be implemented until contentlayer is available for vite
@@ -11,14 +11,14 @@ async function generateRSS() {
       title: 'Omar Aziz',
       site_url: 'https://omaraziz.dev',
       feed_url: 'https://omaraziz.dev/feed.xml',
-    })
-    await writeFile('public/feed.xml', feed.xml())
-    return true
+    });
+    await writeFile('public/feed.xml', feed.xml());
+    return true;
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : `Encoutered an error: ` + error
-    console.trace(errorMessage)
-    return false
+    const errorMessage = error instanceof Error ? error.message : `Encoutered an error: ` + error;
+    console.trace(errorMessage);
+    return false;
   }
 }
 
-generateRSS().then(_ => console.log(JSON.stringify(_, null, 2)))
+generateRSS().then(_ => console.log(JSON.stringify(_, null, 2)));

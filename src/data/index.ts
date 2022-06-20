@@ -1,2 +1,2 @@
-export * from './emojis'
-export * from './head-tags'
+export * from './emojis';
+export * from './head-tags';

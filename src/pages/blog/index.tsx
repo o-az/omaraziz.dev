@@ -1,21 +1,23 @@
-import * as Solid from 'solid-js'
-import { Link, useRouteData } from 'solid-app-router'
-import { SearchBar, Page } from '@/components'
-import type { Article } from '@/types'
+import * as Solid from 'solid-js';
+import { Link, useRouteData } from 'solid-app-router';
+import type { Article } from '@/types';
+
+const Page = Solid.lazy(() => import('@/components/page'));
+const SearchBar = Solid.lazy(() => import('@/components/search-bar'));
 
 function filterArticles({ text, articles }: { text: string; articles: Article[] }) {
-  return articles.filter(({ title }) => text.length && title.toLowerCase().includes(text.toLowerCase()))
+  return articles.filter(({ title }) => text.length && title.toLowerCase().includes(text.toLowerCase()));
 }
 
 export default function Blog() {
-  const articles = useRouteData<Article[]>()
-  const [posts, setPosts] = Solid.createSignal(articles)
+  const articles = useRouteData<Article[]>();
+  const [posts, setPosts] = Solid.createSignal(articles);
 
   const searchFiltering = (event: Event) => {
-    const { value: text } = event.currentTarget as HTMLInputElement
-    const filtered = filterArticles({ text, articles: articles })
-    setPosts(() => (text.length === 0 ? articles : filtered))
-  }
+    const { value: text } = event.currentTarget as HTMLInputElement;
+    const filtered = filterArticles({ text, articles: articles });
+    setPosts(() => (text.length === 0 ? articles : filtered));
+  };
 
   return (
     <Page title="Blog">
@@ -31,9 +33,10 @@ export default function Blog() {
               fallback={<p class="text-zinc-800 dark:text-light-50">No articles match your search</p>}
             >
               {(article, index) => {
-                const { title, description, date, filename, tags } = article
+                const { title, description, date, filename, tags } = article;
                 return (
                   <Link
+                    rel="prefetch"
                     href={`/blog/${filename}`}
                     id={`${index()}`}
                     title={title}
@@ -45,12 +48,12 @@ export default function Blog() {
                     <h1 class="font-semibold text-xl tracking-wide dark:text-light-50">{title}</h1>
                     <p class="break-words overflow-ellipsis antialiased dark:text-gray-200">{description}</p>
                   </Link>
-                )
+                );
               }}
             </Solid.For>
           </div>
         </div>
       </main>
     </Page>
-  )
+  );
 }

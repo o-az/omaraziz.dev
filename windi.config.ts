@@ -1,8 +1,8 @@
 // plugins
-import { defineConfig } from 'windicss/helpers'
-import defaultTheme from 'windicss/defaultTheme'
-import colors from 'windicss/colors'
-import plugin from 'windicss/plugin'
+import { defineConfig } from 'windicss/helpers';
+import defaultTheme from 'windicss/defaultTheme';
+import colors from 'windicss/colors';
+import plugin from 'windicss/plugin';
 
 export default defineConfig({
   attributify: true,
@@ -21,6 +21,11 @@ export default defineConfig({
     'logo-float-xl': 'text-6xl m-2 mr-6 float-right',
   },
   extend: {
+    fontFamily: {
+      sans: ['Inter', 'system-ui'],
+      serif: ['IBM Plex Sans', 'SFMono-Regular'],
+      mono: ['JetBrains Mono', 'monospace'],
+    },
     screens: {
       xs: '400px',
       sm: '640px',
@@ -28,13 +33,7 @@ export default defineConfig({
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
-    },
-    fontFamily: {
-      sans: ['"IBM Plex Sans"', ...defaultTheme.fontFamily.sans],
-      serif: ['"IBM Plex Sans"', ...defaultTheme.fontFamily.serif],
-      inter: ['"Inter Var"', ...defaultTheme.fontFamily.serif],
-      body: ['Merriweather', 'serif'],
-      merriWeather: ['Merriweather', 'serif'],
+      '3xl': '1700px',
     },
     backgroundOpacity: {
       15: '0.15',
@@ -59,6 +58,5 @@ export default defineConfig({
     require('windicss/plugin/typography'),
     require('windicss/plugin/line-clamp'),
     require('windicss/plugin/aspect-ratio'),
-    // plugin(({ addUtilities }) => {}),
   ],
-})
+});

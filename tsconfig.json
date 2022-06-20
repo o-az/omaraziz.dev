@@ -34,7 +34,6 @@
     "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
     "importsNotUsedAsValues": "error",
-    "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,

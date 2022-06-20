@@ -1,11 +1,11 @@
 import * as Solid from 'solid-js';
 const Page = Solid.lazy(() => import('@/components/page'));
 
-export default function Projects() {
+export default function Gm() {
   return (
-    <Page title="Projects">
+    <Page title="✨">
       <main>
-        <h1>projects</h1>
+        <h1>gm</h1>
       </main>
     </Page>
   );

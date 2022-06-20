@@ -1,8 +1,8 @@
 /** @type {import('@types/prettier').Config} */
-const { resolve } = require('path')
+const { resolve } = require('path');
 
 module.exports = {
-  semi: false,
+  semi: true,
   tabWidth: 2,
   useTabs: false,
   printWidth: 120,
@@ -30,4 +30,4 @@ module.exports = {
       },
     },
   ],
-}
+};
