@@ -1,7 +1,7 @@
 import * as Solid from 'solid-js';
 import { useParams, useRouteData } from 'solid-app-router';
 import type { Article, MetaAttributes } from '@/types';
-import { dateStringToHuman, devLogger, addAnchorsTarget, loadExternalScript } from '@/utilities';
+import { dateStringToHuman, devLogger, addAnchorsTarget, loadExternalScript } from '@/lib/utilities';
 import { fetchBlogViews } from '@/api/views';
 import('@/styles/markdown.css');
 const Page = Solid.lazy(() => import('@/components/page'));
@@ -25,7 +25,7 @@ const giscusScript = `
 
 export default function BlogPost() {
   const { id: filename } = useParams<{ id: string }>();
-  const Markdown = Solid.lazy(() => import(`../../data/articles/${filename}.mdx`));
+  const Markdown = Solid.lazy(() => import(`../../lib/data/articles/${filename}.mdx`));
   const { title, description, date, readingTime, tags } = useRouteData<Article>();
 
   const [blogViews] = Solid.createResource(() => filename, fetchBlogViews, {

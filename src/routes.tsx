@@ -1,6 +1,6 @@
 import * as Solid from 'solid-js';
 import type { RouteDefinition } from 'solid-app-router';
-import articles from '@/data/articles/articles.json';
+import articles from '@/lib/data/articles/articles.json';
 
 export const ROUTES: RouteDefinition[] = [
   { path: '/', component: Solid.lazy(() => import('@/pages/home')) },

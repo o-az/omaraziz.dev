@@ -1,5 +1,5 @@
-import { devLogger } from '@/utilities';
-import articles from '@/data/articles/articles.json';
+import { devLogger } from '@/lib/utilities';
+import articles from '@/lib/data/articles/articles.json';
 
 interface Views {
   slug: string;

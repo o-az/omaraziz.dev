@@ -1,6 +1,6 @@
 import * as Solid from 'solid-js';
-import { emojis } from '@/data';
-import { randomArrayElement } from '@/utilities';
+import { emojis } from '@/lib/data';
+import { randomArrayElement } from '@/lib/utilities';
 import type { HTMLElementType } from '@/types';
 
 type Theme = 'light' | 'dark';

@@ -1,6 +1,6 @@
 import * as Solid from 'solid-js';
 import { Navigate } from 'solid-app-router';
-import { devLogger } from '@/utilities';
+import { devLogger } from '@/lib/utilities';
 
 type BaseErrorBoundaryProps = Partial<Parameters<typeof Solid.ErrorBoundary>[0]>;
 

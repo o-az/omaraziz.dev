@@ -1,4 +1,4 @@
-import { devLogger } from '@/utilities';
+import { devLogger } from '@/lib/utilities';
 import * as Solid from 'solid-js';
 import { Title, Meta } from 'solid-meta';
 import { Navigate } from 'solid-app-router';

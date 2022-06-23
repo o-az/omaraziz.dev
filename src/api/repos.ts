@@ -1,4 +1,4 @@
-import { devLogger } from '@/utilities';
+import { devLogger } from '@/lib/utilities';
 
 type FetchMyReposFn = () => Promise<any>;
 export const fetchMyRepos: FetchMyReposFn = async () => {

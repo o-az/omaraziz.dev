@@ -28,6 +28,7 @@
     "localtunnel": "bash scripts/localtunnel.sh"
   },
   "dependencies": {
+    "markdown-wasm": "^1.2.0",
     "solid-app-router": "^0.3.2",
     "solid-js": "^1.4.1",
     "solid-meta": "^0.27.5"

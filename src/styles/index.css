@@ -7,8 +7,8 @@ html,
   overflow-anchor: unset !important;
 }
 
-[data-font="ibm-plex-sans"] {
-  font-family: "IBM Plex Sans", sans-serif;
+[data-font='ibm-plex-sans'] {
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 :focus:not(:focus-visible) {
