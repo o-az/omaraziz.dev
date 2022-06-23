@@ -33,10 +33,6 @@ const viteProxy: Record<string, string | ProxyOptions> = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    configure(proxy, options) {
-      console.log(console.log(inspect(proxy, { depth: null })));
-      // console.log(inspect(options, { depth: null }))
-    },
     followRedirects: true,
   },
 
@@ -69,8 +65,9 @@ const config = async (): Promise<UserConfig> => {
     preview: { port: Number(process.env.PORT || 3000) + 1 },
     resolve: { alias: { '@/': './src' } },
     optimizeDeps: { include: ['solid-js/h/jsx-runtime'] },
-    build: { target: 'esnext' },
+    build: { target: 'esnext', polyfillModulePreload: false },
     clearScreen: true,
+    test: { globals: true },
   };
 };
 
