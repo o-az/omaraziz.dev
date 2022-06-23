@@ -58,7 +58,7 @@ const config = async (): Promise<UserConfig> => {
       WindiCSS(),
       tsconfigPaths(),
       { ...mdx(mdxConfig), enforce: 'pre' },
-      solid({ extensions: ['.mdx', '.md'] }),
+      solid({ extensions: ['.mdx', '.md'] }) as unknown as any,
     ],
     server: {
       host: '0.0.0.0',
@@ -69,10 +69,8 @@ const config = async (): Promise<UserConfig> => {
     preview: { port: Number(process.env.PORT || 3000) + 1 },
     resolve: { alias: { '@/': './src' } },
     optimizeDeps: { include: ['solid-js/h/jsx-runtime'] },
-    build: { target: 'esnext', polyfillDynamicImport: false },
+    build: { target: 'esnext' },
     clearScreen: true,
-    /** vitest */
-    test: { globals: true },
   };
 };
 

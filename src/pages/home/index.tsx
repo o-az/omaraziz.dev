@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <Page title="✨">
       <main class="mt-30 sm:mt-50 relative grid grid-flow-col items-center text-center text-white h-full mx-auto w-full">
-        <section class="grid items-center mx-1 sm:mx-30 space-y-6 lg:flex items-center text-center overflow-hidden text-center mx-auto w-full">
+        <section class="grid items-center mx-1 space-y-6 lg:flex items-center text-center overflow-hidden text-center mx-auto w-full justify-center">
           <p class="text-black dark:(text-[#f7f7f7]) tracking-tighter font-extrabold text-center aspect-w-1 text-9xl px-6 font-sans">
             Omar Aziz
           </p>
