@@ -6,9 +6,8 @@ import type { UserConfig, ProxyOptions } from 'vite';
 import solid from 'vite-plugin-solid';
 import mdx from '@mdx-js/rollup';
 import { mdxConfig } from './mdx.config';
-import WindiCSS from 'vite-plugin-windicss';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { inspect } from 'util';
+import UnocssPlugin from '@unocss/vite';
 
 const viteProxy: Record<string, string | ProxyOptions> = {
   /** Work with Cloudflare Functions */
@@ -38,7 +37,6 @@ const viteProxy: Record<string, string | ProxyOptions> = {
 
   '/oauth-callback': {
     target: '',
-    // secure: true,
     changeOrigin: true,
     rewrite: path => {
       console.log({ path });
@@ -51,10 +49,10 @@ const viteProxy: Record<string, string | ProxyOptions> = {
 const config = async (): Promise<UserConfig> => {
   return {
     plugins: [
-      WindiCSS(),
       tsconfigPaths(),
       { ...mdx(mdxConfig), enforce: 'pre' },
       solid({ extensions: ['.mdx', '.md'] }) as unknown as any,
+      UnocssPlugin(),
     ],
     server: {
       host: '0.0.0.0',

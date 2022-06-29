@@ -2,13 +2,9 @@
 import { render } from 'solid-js/web';
 import { Router } from 'solid-app-router';
 
-import 'virtual:windi.css';
 import '@/styles/index.css';
-import 'virtual:windi-base.css';
-import 'virtual:windi-devtools';
-import 'virtual:windi-utilities.css';
-import 'virtual:windi-components.css';
-import 'windi.css';
+import 'virtual:uno.css';
+import '@unocss/reset/tailwind.css';
 
 import App from '@/App';
 

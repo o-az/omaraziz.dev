@@ -23,6 +23,5 @@ export const ROUTES: RouteDefinition[] = [
     path: '/gm',
     component: Solid.lazy(() => import('@/pages/gm')),
   },
-  { path: '/projects', component: Solid.lazy(() => import('@/pages/projects')) },
   { path: '*', component: Solid.lazy(() => import('@/pages/404')) },
 ];

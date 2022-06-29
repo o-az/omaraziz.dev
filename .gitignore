@@ -68,3 +68,4 @@ dist-ssr
 package-lock.json
 .scratch
 .mf
+vite.config.ts.js

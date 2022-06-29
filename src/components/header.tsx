@@ -32,13 +32,13 @@ const HEADER_ITEMS: ReadonlyArray<HeaderItem> = [
 
 export function Header() {
   return (
-    <div class="flex m-3 mb-20 h-full w-full justify-between px-4 sm:px-5 pt-1 bg-transparent h-full subpixel-antialiased">
+    <header class="flex m-3 mb-2 h-full w-full justify-between px-4 sm:px-5 pt-1 bg-transparent h-full subpixel-antialiased">
       <nav class="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto bg-opacity-60 sm:px-6 text-2xl font-normal align-bottom font-mono">
         <div class="space-x-4 sm:space-x-7 flex">
           <Solid.For each={HEADER_ITEMS}>
             {({ name, path }) => (
               <Link
-                class="rounded-lg text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:px-3 sm:w-auto align-bottom"
+                class={`rounded-lg font-bold text-gray-600 transition-all hover:bg-gray-200 dark:text-gray-200 py-1 dark:hover:text-gray-50 px-2 sm:px-3 sm:w-auto align-bottom hover:cursor-pointer dark:hover:bg-gray-800 border border-transparent dark:hover:border dark:hover:border-gray-700 w-full`}
                 href={path}
               >
                 {name}
@@ -46,10 +46,10 @@ export function Header() {
             )}
           </Solid.For>
         </div>
-        <div class="text-center sm:text-right sm:pr-5 w-full h-full align-middle sm:pb-2">
+        <div class="text-right pr-7 w-full h-full align-middle sm:pb-2">
           <Toggle />
         </div>
       </nav>
-    </div>
+    </header>
   );
 }

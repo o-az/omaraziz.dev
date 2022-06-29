@@ -11,20 +11,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeMathjax from 'rehype-mathjax';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings, { type Options as RehypeAutolinkHeadingsOptions } from 'rehype-autolink-headings';
-
-import rehypePrettyCode, { type Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
-import rehypeTheme from './public/assets/mdx-theme/moonlight-ii.json';
-
-const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
-  theme: { dark: JSON.parse(JSON.stringify(rehypeTheme)), light: 'github-light' },
-  tokensMap: { fn: 'entity.name.function' },
-
-  onVisitLine: node => {
-    if (node.children.length === 0) return (node.children = [{ type: 'text', value: ' ' }]);
-  },
-  onVisitHighlightedLine: node => node.properties.className.push('highlighted'),
-  onVisitHighlightedWord: node => (node.properties.className = ['word']),
-};
+import rehypePrism from 'rehype-prism';
 
 const remarkGfmOptions: RemarkGfmOptions = {
   singleTilde: true,
@@ -69,8 +56,8 @@ export const mdxConfig: MdxOptions = {
     rehypeSlug,
     rehypeMathjax,
     rehypeCodeTitles,
-    [rehypePrettyCode, rehypePrettyCodeOptions],
     [rehypeAutolinkHeadings, rehypeAutolinkHeadingsOptions],
+    rehypePrism
   ],
   outputFormat: 'program',
   recmaPlugins: [],

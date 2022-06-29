@@ -43,7 +43,8 @@ export default function Blog() {
                     data-description={description}
                     data-date={date}
                     data-tags={tags}
-                    class="rounded-md flex flex-col m-auto space-y-2 border-1 border-gray-600 p-4.5 text-gray-800 dark:text-gray-200 hover:cursor-pointer hover:bg-zinc-900 hover:border-gray-700 hover:(text-light-900 bg-light-900 border-gray-100) dark:hover:bg-zinc-900"
+                    class="rounded-md flex flex-col m-auto space-y-2 border-1 border-gray-600 p-3 text-gray-800 dark:text-gray-200 hover:cursor-pointer hover:bg-gray-200 hover:border-gray-500 hover:text-gray-900 hoverbg-light-900 hover:border-gray-100 dark:hover:bg-zinc-900"
+                    // class="rounded-md flex flex-col m-auto space-y-2 border-1 border-gray-600 p-4.5 text-gray-800 dark:text-gray-200 hover:cursor-pointer hover:bg-zinc-900 hover:border-gray-700 hover:(text-light-900 bg-light-900 border-gray-100) dark:hover:bg-zinc-900"
                   >
                     <h1 class="font-semibold text-xl tracking-wide dark:text-light-50">{title}</h1>
                     <p class="break-words overflow-ellipsis antialiased dark:text-gray-200">{description}</p>
