@@ -731,7 +731,8 @@ p {
   margin: 0 !important;
 }
 
-code, pre .token {
+code,
+pre .token {
   font-family: JetBrains Mono, monospace;
 }
 

@@ -16,17 +16,6 @@ const HEADER_ITEMS: ReadonlyArray<HeaderItem> = [
     name: 'blog',
     path: '/blog',
   },
-  // {
-  //   name: 'projects',
-  //   path: '/projects',
-  // },
-  // {
-  //   name: 'gm',
-  //   path: '/gm',
-  // },
-  // {
-  //   name: 'Bits',
-  //   path: '/bits',
   // },
 ] as const;
 

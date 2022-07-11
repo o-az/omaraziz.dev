@@ -1,33 +1,27 @@
 import { defineConfig } from '@unocss/vite';
-import { presetMini } from '@unocss/preset-mini';
-import presetIcons from '@unocss/preset-icons';
 import presetUno from '@unocss/preset-uno';
-import presetAttributify from '@unocss/preset-attributify';
-import presetTypography from '@unocss/preset-typography';
-import presetWebFonts from '@unocss/preset-web-fonts';
 import presetWind from '@unocss/preset-wind';
+import presetIcons from '@unocss/preset-icons';
+import { presetMini } from '@unocss/preset-mini';
+import presetWebFonts from '@unocss/preset-web-fonts';
+import presetTypography from '@unocss/preset-typography';
+import presetAttributify from '@unocss/preset-attributify';
 import transformerVariantGroup from '@unocss/transformer-variant-group';
 
 export default defineConfig({
   presets: [
     presetUno(),
-    presetMini(),
-    transformerVariantGroup(),
-    presetAttributify(),
-    presetIcons(),
     presetWind(),
+    presetMini(),
+    presetIcons(),
+    presetAttributify(),
+    transformerVariantGroup(),
     presetTypography({
       selectorName: 'markdown',
       cssExtend: {
-        code: {
-          color: '#8b5cf6',
-        },
-        'a:hover': {
-          color: '#f43f5e',
-        },
-        'a:visited': {
-          color: '#14b8a6',
-        },
+        code: { color: '#8b5cf6' },
+        'a:hover': { color: '#f43f5e' },
+        'a:visited': { color: '#14b8a6' },
       },
     }),
     presetWebFonts({

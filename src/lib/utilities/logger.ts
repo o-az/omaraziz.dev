@@ -18,15 +18,20 @@ export function devLogger(
   switch (errorType) {
     case LOG_TYPE.INFO:
       console.info(JSON.stringify(args, null, 2));
+      break;
     case LOG_TYPE.WARN:
       console.warn(JSON.stringify(args, null, 2));
+      break;
 
     case LOG_TYPE.ERROR:
       console.error(JSON.stringify(args, null, 2));
+      break;
 
     case LOG_TYPE.DEBUG:
       console.debug(JSON.stringify(args, null, 2));
+      break;
     default:
       console.log(JSON.stringify(args, null, 2));
+      break;
   }
 }

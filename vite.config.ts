@@ -1,8 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="vitest" />
 
-import { defineConfig } from 'vite';
-import type { UserConfig, ProxyOptions } from 'vite';
+import { defineConfig, type UserConfig, type ProxyOptions } from 'vite';
 import solid from 'vite-plugin-solid';
 import mdx from '@mdx-js/rollup';
 import { mdxConfig } from './mdx.config';
@@ -51,7 +50,7 @@ const config = async (): Promise<UserConfig> => {
     plugins: [
       tsconfigPaths(),
       { ...mdx(mdxConfig), enforce: 'pre' },
-      solid({ extensions: ['.mdx', '.md'] }) as unknown as any,
+      solid({ extensions: ['.mdx', '.md'] }),
       UnocssPlugin(),
     ],
     server: {

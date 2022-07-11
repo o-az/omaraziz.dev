@@ -5,7 +5,7 @@ import { ROUTES } from '@/routes';
 import { Header } from '@/components';
 
 export default function App() {
-  const Route = useRoutes(ROUTES); 
+  const Route = useRoutes(ROUTES);
 
   return (
     <Solid.ErrorBoundary fallback={<></>}>
