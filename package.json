@@ -54,7 +54,7 @@
     "@unocss/preset-icons": "^0.41.2",
     "@unocss/preset-mini": "^0.41.2",
     "@unocss/preset-typography": "^0.41.2",
-    "@unocss/preset-uno": "^0.41.2",
+    "@unocss/preset-uno": "^0.44.3",
     "@unocss/preset-web-fonts": "^0.41.2",
     "@unocss/preset-wind": "^0.41.2",
     "@unocss/reset": "^0.41.2",
